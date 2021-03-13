@@ -17,9 +17,9 @@
 /*
   redshift scrolling parameters used by the drive_zscroll drive program
 */
-#define ZSTART (12) //inclusive
-#define ZEND (5) // inclusive
-#define ZSTEP (-0.5)
+#define ZSTART (25) //inclusive
+#define ZEND (6) // inclusive
+#define ZSTEP (-0.25)
 
 
 int main(int argc, char ** argv){

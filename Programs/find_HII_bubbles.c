@@ -35,6 +35,7 @@
 float *Fcoll;
 float *Fcoll_uni;
 float *Fcoll_fs;
+float *Fcoll_sfrxs;
 float *mass_box;
 float *collapsed_mass;
 float *star_mass;
@@ -49,8 +50,11 @@ void init_21cmMC_arrays() { // defined in Cosmo_c_files/ps.c
 
     Overdense_spline_SFR = calloc(NSFR_high,sizeof(float)); // New in v1.4
     Overdense_spline_SFR_fs = calloc(NSFR_high,sizeof(float)); //-MG
+    Overdense_spline_SFR_sfrxs = calloc(NSFR_high,sizeof(float)); //-LMR
     Fcoll_spline_SFR = calloc(NSFR_high,sizeof(float));
     Fcoll_spline_SFR_fs = calloc(NSFR_high,sizeof(float)); //-MG
+    Fcoll_spline_SFR_sfrxs = calloc(NSFR_high,sizeof(float)); //-LMR
+
     if(USE_GENERAL_SOURCES)
     {
       //printf("initialized zeta spline array\n");
@@ -59,6 +63,7 @@ void init_21cmMC_arrays() { // defined in Cosmo_c_files/ps.c
     }
     second_derivs_SFR = calloc(NSFR_high,sizeof(float));
     second_derivs_SFR_fs = calloc(NSFR_high,sizeof(float)); //-MG
+    second_derivs_SFR_sfrxs = calloc(NSFR_high,sizeof(float)); //-LMR
     xi_SFR = calloc((NGL_SFR+1),sizeof(float));
     wi_SFR = calloc((NGL_SFR+1),sizeof(float));
 }
@@ -73,8 +78,10 @@ void destroy_21cmMC_arrays() {
 
     free(Overdense_spline_SFR); // New in v1.4
     free(Overdense_spline_SFR_fs); //-MG
+    free(Overdense_spline_SFR_sfrxs); //-LMR
     free(Fcoll_spline_SFR);
     free(Fcoll_spline_SFR_fs); //-MG
+    free(Fcoll_spline_SFR_sfrxs); //-LMR
     if(USE_GENERAL_SOURCES)
     {
       free(zeta_spline_SFR);
@@ -82,6 +89,7 @@ void destroy_21cmMC_arrays() {
     }
     free(second_derivs_SFR);
     free(second_derivs_SFR_fs); //-MG
+    free(second_derivs_SFR_sfrxs); //-LMR
     free(xi_SFR);
     free(wi_SFR);
 }
@@ -200,6 +208,8 @@ int main(int argc, char ** argv){
   float f_coll_crit, pixel_volume,  density_over_mean, erfc_num, erfc_denom, erfc_denom_cell, res_xH, Splined_Fcoll, Splined_Fcoll_uni, Splined_Fcoll_fs;
   double coll_mass, cell_mass, val, mean_f_coll_st_uni, ST_over_PS_uni, f_coll_uni; //-MG
   double mean_f_coll_st_fs, ST_over_PS_fs, f_coll_fs;
+  double mean_f_coll_st_sfrxs, ST_over_PS_sfrxs, f_coll_sfrxs; //-LMR
+  float Splined_Fcoll_sfrxs;
   float metal_val, Halpha_lum, Lya_lum, Lya_emissivity, n_Hii; //-MG
   float Lya_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], Halpha_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]; //-MG
   double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS]; //-MG
@@ -227,6 +237,8 @@ int main(int argc, char ** argv){
   // Initializtion of source structure - RM
   sources src;
   src = defaultSources();
+
+  //fprintf(stderr, "SFR - - - - - - - - : %f\n", src.fstar(8,1e11));
 
   int HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY = 0;
 
@@ -290,6 +302,7 @@ int main(int argc, char ** argv){
   Fcoll = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
   Fcoll_uni = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
   Fcoll_fs = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
+  Fcoll_sfrxs = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
   mass_box = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
   collapsed_mass = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
   star_mass = (float *) malloc(sizeof(float)*HII_TOT_FFT_NUM_PIXELS);
@@ -402,6 +415,8 @@ int main(int argc, char ** argv){
   //custom f_coll using all calculations from "else" parts -MG
   mean_f_coll_st_uni = FgtrM_st(REDSHIFT, M_MIN);
   mean_f_coll_st_fs = FgtrM_st_fs(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
+  //fprintf(stderr, "MEAN FCOLL ST FS - - - - - - - - : %e\n", mean_f_coll_st_fs);
+  mean_f_coll_st_sfrxs = FgtrM_st_sfrxs(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
   // - RM
   //X_LUMINOSITY = 3.2e40;
     /**********  CHECK IF WE ARE IN THE DARK AGES ******************************/
@@ -502,6 +517,7 @@ int main(int argc, char ** argv){
       free_ps(); fclose(F); F = NULL; fclose(LOG); fftwf_free(xH); fftwf_cleanup_threads();
       free(Fcoll);
       free(Fcoll_uni);
+      free(Fcoll_sfrxs);
       free(Fcoll_fs);
       free(mass_box);
       free(collapsed_mass);
@@ -727,6 +743,7 @@ int main(int argc, char ** argv){
       free(Fcoll);
       free(Fcoll_uni);
       free(Fcoll_fs);
+      free(Fcoll_sfrxs);
       free(mass_box);
       free(collapsed_mass);
       free(star_mass);
@@ -839,10 +856,11 @@ int main(int argc, char ** argv){
       } //  end sanity check in box
 
 
-      // normalize the analytic collapse fractions if we operating on the density field
+      // normalize the analytic collapse fractions if we are operating on the density field
       f_coll = 0.0;
       f_coll_uni = 0.0;
       f_coll_fs = 0.0;
+      f_coll_sfrxs = 0.0; 
       massofscaleR = RtoM(R);
       if (!USE_HALO_FIELD){
   fprintf(LOG, "begin f_coll normalization, clock=%06.2f\n", (double)clock()/CLOCKS_PER_SEC);
@@ -853,6 +871,7 @@ int main(int argc, char ** argv){
     initialiseGL_FcollSFR(NGL_SFR, M_MIN/50.0, massofscaleR, REDSHIFT);
     initialiseFcollSFR_spline(REDSHIFT, massofscaleR,M_TURN,ALPHA_STAR,ALPHA_ESC,F_STAR10,F_ESC10,Mlim_Fstar,Mlim_Fesc);
     initialiseFcollSFR_spline_fs(REDSHIFT, massofscaleR, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
+    initialiseFcollSFR_spline_sfrxs(REDSHIFT, massofscaleR, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar); // - LMR
     // - RM
     /*
     if(USE_GENERAL_SOURCES)
@@ -886,34 +905,52 @@ int main(int argc, char ** argv){
         zetaSpline_SFR(density_over_mean - 1,&(Splined_zeta));
       }*/
           density_over_mean = 1.0 + *((float *)deltax_filtered + HII_R_FFT_INDEX(x,y,z));
-          if ( (density_over_mean - 1) < Deltac){ // we are not resolving collapsed structures
+          //if ( (density_over_mean - 1) < Deltac){ // we are not resolving collapsed structures
             //make new Splined_Fcoll_uni that mimics else statement
+            //erfc_num = (Deltac - (density_over_mean-1)) /  growth_factor;
+            //Splined_Fcoll_uni = splined_erfc(erfc_num/erfc_denom);
+            //if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) { // New in v1.4
+              //FcollSpline_SFR(density_over_mean - 1,&(Splined_Fcoll));
+              //FcollSpline_SFR_fs(density_over_mean - 1,&(Splined_Fcoll_fs));
+            //}
+            //else{ // we can assume the classic constant ionizing luminosity to halo mass ratio
+              //Splined_Fcoll = Splined_Fcoll_uni;
+              //Splined_Fcoll_fs = Splined_Fcoll_uni;
+            //}
+          //}
+          //else { // the entrire cell belongs to a collpased halo...  this is rare...
+            //Splined_Fcoll =  1.0;
+            //Splined_Fcoll_uni = 1.0;
+            //Splined_Fcoll_fs = 1.0;
+          //}
+          // gonna avoid equating the collapsed fractions to 1 and make calculate for sure in all cases here - LMR
             erfc_num = (Deltac - (density_over_mean-1)) /  growth_factor;
             Splined_Fcoll_uni = splined_erfc(erfc_num/erfc_denom);
-            if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) { // New in v1.4
-              FcollSpline_SFR(density_over_mean - 1,&(Splined_Fcoll));
-              FcollSpline_SFR_fs(density_over_mean - 1,&(Splined_Fcoll_fs));
-            }
-            else{ // we can assume the classic constant ionizing luminosity to halo mass ratio
-              Splined_Fcoll = Splined_Fcoll_uni;
-              Splined_Fcoll_fs = Splined_Fcoll_uni;
-            }
-          }
-          else { // the entrire cell belongs to a collpased halo...  this is rare...
-            Splined_Fcoll =  1.0;
-            Splined_Fcoll_uni = 1.0;
-            Splined_Fcoll_fs = 1.0;
-          }
+            FcollSpline_SFR(density_over_mean - 1,&(Splined_Fcoll));
+            FcollSpline_SFR_fs(density_over_mean - 1,&(Splined_Fcoll_fs));
+            FcollSpline_SFR_sfrxs(density_over_mean - 1,&(Splined_Fcoll_sfrxs));
+            //if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) { // New in v1.4
+            //  FcollSpline_SFR(density_over_mean - 1,&(Splined_Fcoll));
+            //  FcollSpline_SFR_fs(density_over_mean - 1,&(Splined_Fcoll_fs));
+              //FcollSpline_SFR_sfrxs(density_over_mean - 1,&(Splined_Fcoll_sfrxs));
+            //}
+            //else{ // we can assume the classic constant ionizing luminosity to halo mass ratio
+              //Splined_Fcoll = Splined_Fcoll_uni;
+              //Splined_Fcoll_fs = Splined_Fcoll_uni;
+              //}
         }
         // save the value of the collapsed fraction into the Fcoll array
         Fcoll[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll;
           //load separate fcoll_uni box assuming 'else' case for everything
           Fcoll_uni[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_uni;
           Fcoll_fs[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_fs;
+          Fcoll_sfrxs[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_sfrxs;
         f_coll += Splined_Fcoll;
           //add to separate f_coll_uni using 'else' case
           f_coll_uni += Splined_Fcoll_uni;
           f_coll_fs += Splined_Fcoll_fs;
+          f_coll_sfrxs += Splined_Fcoll_sfrxs;
+
 
         // - RM
         /*
@@ -930,9 +967,11 @@ int main(int argc, char ** argv){
   f_coll /= (double) HII_TOT_NUM_PIXELS; // ave PS fcoll for this filter scale
     f_coll_uni /= (double) HII_TOT_NUM_PIXELS; //same for uni one -MG
     f_coll_fs /= (double) HII_TOT_NUM_PIXELS;
+    f_coll_sfrxs /= (double) HII_TOT_NUM_PIXELS;
   ST_over_PS = mean_f_coll_st/f_coll; // normalization ratio used to adjust the PS conditional collapsed fraction
     ST_over_PS_uni = mean_f_coll_st_uni / f_coll_uni; //same for uni one -MG
     ST_over_PS_fs = mean_f_coll_st_fs / f_coll_fs;
+    ST_over_PS_sfrxs = mean_f_coll_st_sfrxs / f_coll_sfrxs;
   fprintf(LOG, "end f_coll normalization if, clock=%06.2f\n", (double)clock()/CLOCKS_PER_SEC);
   fflush(LOG);
       } // end ST fcoll normalization
@@ -968,6 +1007,7 @@ int main(int argc, char ** argv){
       f_coll = ST_over_PS * Fcoll[HII_R_FFT_INDEX(x,y,z)];
       //make custom f_coll_uni using custom st_over_ps
       f_coll_uni = ST_over_PS_uni * Fcoll_uni[HII_R_FFT_INDEX(x,y,z)];
+      //f_coll_sfrxs = ST_over_PS_sfrxs * Fcoll_sfrxs[HII_R_FFT_INDEX(x,y,z)];
 
       if (INHOMO_RECO){
         dfcolldt = f_coll / t_ast;
@@ -1084,7 +1124,7 @@ int main(int argc, char ** argv){
     }
 
     //read in last stellar mass box to add to (if applicable) -MG
-    /*sprintf(filename, "../Boxes/stellarmass_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", PREV_REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+    sprintf(filename, "../Boxes/stellarmass_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", PREV_REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
     F = fopen(filename, "rb");
     if (!(F = fopen(filename, "rb"))){
       fprintf(stderr, "Error opening file %s for reading.\n", filename);
@@ -1106,7 +1146,7 @@ int main(int argc, char ** argv){
         }
       }
       fclose(F);
-    }*/
+    }
 
     val = timesince(REDSHIFT, PREV_REDSHIFT) / (60*60*24*365.25); //in yrs, calculating here to hopefully speed things up -MG
     //output box now (for sure uses last fcoll calculation) -MG
@@ -1115,48 +1155,52 @@ int main(int argc, char ** argv){
         for (z=0; z<HII_DIM; z++){
           //calculate value of mass, collapsed mass, stellar mass, SFR, and metallicity -MG
           ct = HII_R_FFT_INDEX(x,y,z);
-          density_over_mean = 1.0 + *((float *)deltax_filtered + ct);
-          mass_box[ct] = density_over_mean * OMm * RHOcrit * pixel_volume;
-          collapsed_mass[ct] = ST_over_PS_uni * Fcoll_uni[ct] * mass_box[ct];
-          star_mass[ct] = F_b * ST_over_PS_fs * Fcoll_fs[ct] * mass_box[ct]; //F_b times collapsed mass with Fs taken into account
-          SFR[ct] = star_mass[ct] * (60*60*24*365.25) / t_ast; // adjust for t_ast being in seconds -> years
-          //stellar_mass[ct] += SFR[ct] * val;
-          metallicity[ct] += Y_z * SFR[ct] * val / (mean_rho_comoving(REDSHIFT) * pixel_volume * Fcoll_uni[ct] * ST_over_PS_uni);
-          n_Hii = (1 - xH[HII_R_INDEX(x,y,z)]) * N_b0 * pow(1+REDSHIFT, 3); //* density_over_mean; //equation 7 in overleaf
-          Lya_emissivity = f_rec_lya * (double) 4.2e-13 * pow(1+REDSHIFT, 3) * (1 + He_abundance / (2 * H_abundance)) * Ly_alpha_E * pow(n_Hii, 2);
-          Lya_igm[ct] = (C * Lya_emissivity) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT));
+          //density_over_mean = 1.0 + *((float *)deltax_filtered + ct);
+          //mass_box[ct] = density_over_mean * OMm * RHOcrit * pixel_volume;
+          //collapsed_mass[ct] = ST_over_PS_uni * Fcoll_uni[ct] * mass_box[ct];
+          //star_mass[ct] = F_b * ST_over_PS_fs * Fcoll_fs[ct] * mass_box[ct]; //F_b times collapsed mass with Fs taken into account
+          //SFR[ct] = star_mass[ct] * (60*60*24*365.25) / t_ast; // adjust for t_ast being in seconds -> years
+          SFR[ct] = Fcoll_sfrxs[ct] * ST_over_PS_sfrxs *  OMm * RHOcrit;
+          stellar_mass[ct] += SFR[ct] * val;
+          //metallicity[ct] += Y_z * SFR[ct] * val / (mean_rho_comoving(REDSHIFT) * pixel_volume * Fcoll_uni[ct] * ST_over_PS_uni);
+          //n_Hii = (1 - xH[HII_R_INDEX(x,y,z)]) * N_b0 * pow(1+REDSHIFT, 3); //* density_over_mean; //equation 7 in overleaf
+          //Lya_emissivity = f_rec_lya * (double) 4.2e-13 * pow(1+REDSHIFT, 3) * (1 + He_abundance / (2 * H_abundance)) * Ly_alpha_E * pow(n_Hii, 2);
+          //Lya_igm[ct] = (C * Lya_emissivity) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT));
         }
       }
     }
     //average stellar mass box and print
+    double ave_sfr = 0.0;
     /*double mass_avg = 0.0;
     double overdens_avg = 0.0;
     double collmass_avg = 0.0;
     double stellar_mass_avg = 0.0;
     double fcoll_avg = 0.0;
-    double fcollfs_avg = 0.0;
+    double fcollfs_avg = 0.0;*/
     for (x=0; x<HII_DIM; x++) {
       for (y=0; y<HII_DIM; y++) {
         for (z=0; z<HII_DIM; z++) {
             ct = HII_R_FFT_INDEX(x,y,z);
-            mass_avg += mass_box[ct];
-            overdens_avg += 1.0 + *((float *)deltax_filtered + ct);
-            collmass_avg += collapsed_mass[ct];
-            stellar_mass_avg += (double) star_mass[ct];
-            fcoll_avg += (double) Fcoll_uni[ct];
-            fcollfs_avg += (double) Fcoll_fs[ct];
+            ave_sfr += (double) stellar_mass[ct];
+            //mass_avg += mass_box[ct];
+            //overdens_avg += 1.0 + *((float *)deltax_filtered + ct);
+            //collmass_avg += collapsed_mass[ct];
+            //stellar_mass_avg += (double) star_mass[ct];
+            //fcoll_avg += (double) Fcoll_uni[ct];
+            //fcollfs_avg += (double) Fcoll_fs[ct];
         }
       }
     }
-    mass_avg /= (BOX_LEN * BOX_LEN * BOX_LEN);
-    overdens_avg /= (HII_DIM * HII_DIM * HII_DIM);
-    collmass_avg /= (BOX_LEN * BOX_LEN * BOX_LEN);
-    stellar_mass_avg /= (BOX_LEN * BOX_LEN * BOX_LEN);
-    fcoll_avg /= (HII_DIM * HII_DIM * HII_DIM);
-    fcollfs_avg /= (HII_DIM * HII_DIM * HII_DIM);
-    fprintf(stderr, "Overdensity avg: %f, Mass density: %f, collmass density: %f\n", overdens_avg, mass_avg, collmass_avg);
-    fprintf(stderr, "Stellar mass density: %f, fcoll: %f, fcoll_fs: %f\n", stellar_mass_avg, fcoll_avg, fcollfs_avg);
-    fprintf(stderr, "ST_over_PS_uni: %f, ST_over_PS_fs: %f\n", ST_over_PS_uni, ST_over_PS_fs);*/
+    //ave_sfr /= (BOX_LEN * BOX_LEN * BOX_LEN);
+    ave_sfr /= (HII_DIM * HII_DIM * HII_DIM);
+    //collmass_avg /= (BOX_LEN * BOX_LEN * BOX_LEN);
+    //stellar_mass_avg /= (BOX_LEN * BOX_LEN * BOX_LEN);
+    //fcoll_avg /= (HII_DIM * HII_DIM * HII_DIM);
+    //fcollfs_avg /= (HII_DIM * HII_DIM * HII_DIM);
+    fprintf(stderr, "SMD at z = %f - - - - - - - - : %f\n", REDSHIFT, ave_sfr);
+    //fprintf(stderr, "Overdensity avg: %f, Mass density: %f, collmass density: %f\n", overdens_avg, mass_avg, collmass_avg);
+    //fprintf(stderr, "Stellar mass density: %f, fcoll: %f, fcoll_fs: %f\n", stellar_mass_avg, fcoll_avg, fcollfs_avg);
+    //fprintf(stderr, "ST_over_PS_uni: %f, ST_over_PS_fs: %f\n", ST_over_PS_uni, ST_over_PS_fs);*/
 
     //if custom SEDs are enabled, use metallicity and starmass boxes to calculate other emission line radiation
     if (USE_CUSTOM_SEDS && compute_seds) {

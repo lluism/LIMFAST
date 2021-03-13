@@ -63,7 +63,7 @@ double get_param(char* f, int ind)
   More specific definitions covered in compute_line_fields.c
   -MG
 */
-#define USE_CUSTOM_SEDS (int) (1)
+#define USE_CUSTOM_SEDS (int) (0)
 
 /*
   Set radio background temp to this fraction of ARCADE 2's measurement.

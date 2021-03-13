@@ -50,6 +50,7 @@ sources setSources(double (*fesc)(double, double),
     return s;
 }
 
+
 double zeta_at_M(sources s, double z, double M)
 {
     return 1.22 * s.fstar(z, M) * s.fesc(z, M) * s.Nion(z, M);
@@ -474,6 +475,15 @@ double fescCutoff(double z, double M) {return 0.1;}
 double fstarCutoff(double z, double M) {return 0.05;}
 double fxCutoff(double z, double M) {return 1.0;}
 
+double sfrxs(double z, double M)
+{
+    double A = 24.0;
+    double mu = 1.0;
+    double beta = 5.0/2.0;
+    double Ob_over_Om = 1.0/6.0;
+    return fstarFidMom_fig2(z, M) * Ob_over_Om * A * pow(M/1e12,mu) * pow(1.0+z,beta);
+}
+
 sources MomPopIII()
 {
     sources s;
@@ -525,13 +535,21 @@ sources test() {
     return setSources(fesc_21cmfid, histogram_Nion, fstarFidMom_fig2, fxDef, minMassDefMom, noPopIII);
 }
 
+sources XS() {
+  return setSources(fesc_21cmfid, NionDef, sfrxs, fxDef, minMassDefMom, customPopIII);
+}
+
+
+
+
+
 // set the sources here
 sources defaultSources()
 {
     sources s;
     //change according to desired model
     //s = MomPopIII();
-    s = fig2();
+    s = XS();
     //s = test();
     return s;
 }
