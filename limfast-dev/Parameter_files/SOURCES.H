@@ -6,13 +6,22 @@
 
 #include "INIT_PARAMS.H"
 #include "ANAL_PARAMS.H"
+#include "../Parameter_files/COSMOLOGY.H"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "../Cosmo_c_files/compute_mar.c"
+#include "../Cosmo_c_files/compute_fstar_tilde.c"
 #include "../Cosmo_c_files/compute_line_luminosity.c"
+#include "../Programs/compute_line_fields.c" //-MG
+//#include "../Programs/compute_all_lines.c" //-GS
+
+#define Y_z (float) (0.01) // fraction of metal to stellar mass -LMR 
+
+float Halpha_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1];
+double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS];
 
 // more general, allows for halos with multiple populations
 typedef struct{
@@ -24,7 +33,8 @@ typedef struct{
     double (*minMass)(double); // minimum halo mass for star formation (both Pop II and Pop III)
     double (*fPopIII)(double); // mass fraction of Pop III halos at redshift z. If no mixed populations, just set to 0 or 1. Needed for spectral emissivity calculation
     double (*mar)(double, double); // mass accretion rate
-    double (*linelum)(double, double);
+    double (*linelum)(double, double);  // line luminosity for the CONTINUOUS SF case 
+    double (*linelumburst)(double,double); // line luminosity per halo for the BURSTY SF case
 } sources;
 
 // atomic cooling threshold
@@ -44,7 +54,8 @@ sources setSources(double (*fesc)(double, double),
                    double (*minMass)(double),
                    double (*fPopIII)(double),
                    double (*mar)(double, double),
-                   double (*linelum)(double, double))
+                   double (*linelum)(double, double),
+                   double (*linelumburst)(double,double))
 {
     sources s;
     s.fesc = fesc;
@@ -55,6 +66,7 @@ sources setSources(double (*fesc)(double, double),
     s.fPopIII = fPopIII;
     s.mar = mar;
     s.linelum = linelum;
+    s.linelumburst = linelumburst;
     return s;
 }
 
@@ -305,6 +317,18 @@ double line_luminosity(double logZ, double logU) {
     return get_pop2_lum(logZ, logU);
 }
 
+double lum_per_halo(double z, double M){ // - LMR
+    double fstar_tilde = 0.0; 
+    fstar_tilde = get_ftilde(z,M); // get the fstar_tilde per halo
+    double logmetal = 0.0;
+    logmetal = log10(fstar_tilde * Y_z  * OMm / OMb / Z_sun); // compute the metallicity per halo
+    return get_luminosity(Halpha_table_pop2, table_pop3, -1., 3, 0.0, 3);
+    // this is just for Ha for now !!!
+}
+
+
+
+
 double custom_Nion(double z, double M) {
     //double frac_pop3 = customPopIII(z);
     double frac_pop3 = 0.0;
@@ -518,40 +542,40 @@ double fxCutoff(double z, double M) {return 1.0;}
 sources MomPopIII()
 {
     sources s;
-    s = setSources(fescDef, NionDef, fstarFidMom, fxDef, minMassDefMom, noPopIII, mar_from_ham, line_luminosity);
+    s = setSources(fescDef, NionDef, fstarFidMom, fxDef, minMassDefMom, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
     return s;
 }
 
 sources EnergyPopIII()
 {
     sources s;
-    s = setSources(fescDef, NionDef, fstarFid, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
+    s = setSources(fescDef, NionDef, fstarFid, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
     return s;
 }
 
 sources MomPopII()
 {
     sources s;
-    s = setSources(fescDef, NionDef, fstarSteveMom, fxDef, minMassATC, noPopIII, mar_from_ham, line_luminosity);
+    s = setSources(fescDef, NionDef, fstarSteveMom, fxDef, minMassATC, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
     return s;
 }
 
 sources EnergyPopII()
 {
     sources s;
-    s = setSources(fescDef, NionDef, fstarSteveEnergy, fxDef, minMassATC, noPopIII, mar_from_ham, line_luminosity);
+    s = setSources(fescDef, NionDef, fstarSteveEnergy, fxDef, minMassATC, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
     return s;
 }
 
 sources fid_21cmFAST()
 {
     sources s;
-    s = setSources(fesc_21cmfid, NionCutoff, fstar_21cmfid, fxCutoff, minMass_21cmfid, noPopIII, mar_from_ham, line_luminosity);
+    s = setSources(fesc_21cmfid, NionCutoff, fstar_21cmfid, fxCutoff, minMass_21cmfid, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
     return s;
 }
 
 sources fig2() {
-  return setSources(fesc_21cmfid, NionDef, fstarFidMom_fig2, fxDef, minMassDefMom, customPopIII, mar_from_ham, line_luminosity);
+  return setSources(fesc_21cmfid, NionDef, fstarFidMom_fig2, fxDef, minMassDefMom, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
 }
 
 double fstar_test(double z, double M) {
@@ -565,7 +589,7 @@ double minmass_test(double z) {
 sources test() {
     //return setSources(fesc_21cmfid, histogram_Nion, fstarFidMom_fig2, fxDef, minMassDefMom, noPopIII);
     //return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
-    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
+    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
 }
 
 // set the sources here

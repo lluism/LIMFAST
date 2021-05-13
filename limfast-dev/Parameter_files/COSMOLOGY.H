@@ -25,7 +25,6 @@
 #define wl   (float) (-1.0) /* dark energy equation of state parameter (wl = -1 for vacuum ) */
 #define F_b  (float) (OMb / OMm) //-MG
 #define F_s (float) (0.05) //-MG
-#define Y_z (float) (0.01) //-MG
 
 /*
    Note that the best fit b and c ST params for these 3D realisations have a redshift,

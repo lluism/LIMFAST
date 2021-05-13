@@ -14,9 +14,9 @@
   Program DRIVE_ZSCROLL.C scrolls through the redshifts defined in ANAL_PARAMS.H creating halo, velocity, density, and ionization fields
 */
 
-#define ZLOW (float) (6.0)
+#define ZLOW (float) (5.0)
 //#define ZHIGH  Z_HEAT_MAX
-#define ZHIGH (float) (6.5)
+#define ZHIGH (float) (20)
 
 int main(int argc, char ** argv){
   //float Z, M, M_MIN, nf;

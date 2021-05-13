@@ -30,7 +30,7 @@
 /******** BEGIN USER CHANGABLE DEFINITIONS   **********/
 #define RANDOM_SEED (long) (1) // seed for the random number generator
 #define BOX_LEN (float) 300 // in Mpc
-#define DIM (int) 800 // number of cells for the high-res box (sampling ICs) along a principal axis
+#define DIM (int) 200 // number of cells for the high-res box (sampling ICs) along a principal axis
 // to avoid sampling issues, DIM should be at least 3 or 4 times HII_DIM, and an integer multiple)
 #define HII_DIM (int) 150 // number of cells for the low-res box
 

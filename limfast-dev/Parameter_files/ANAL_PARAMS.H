@@ -50,6 +50,8 @@ double get_param(char* f, int ind)
 #define ESC_FRAC (double) (0.1) // ionizing escape fraction, defined for 10^10 Msun halos
 #define ESC_PL (double) (-0.5) //power law index w/ halo mass
 #define M_TURNOVER (double) (5e8) // Halo mass threshold for efficient star formation (in Msun).
+#define Z_sun (double) (0.014) // This is the value of solar metallicity - LMR
+#define emis_time (double) (5e6) // Time during which the bursty case is emitting radiation (in years) - LMR
 
 /*
   Use the generalized source presciptions in SOURCES.H if 1
