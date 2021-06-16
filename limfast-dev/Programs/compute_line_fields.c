@@ -23,8 +23,11 @@
 #define POP3_ION_SAMPLES (int) 3
 #define POP3_COLUMNS (int) 8
 
-#define HALPHA_POP2_FILENAME (const char *) "../External_tables/Halpha_table_pop2.dat"
-#define LYA_POP2_FILENAME (const char *) "../External_tables/Lya_table_pop2.dat"
+#define HALPHA_POP2_FILENAME (const char *) "../External_tables/Ha_PopII_table_bursty.dat"
+#define LYA_POP2_FILENAME (const char *) "../External_tables/Lya_PopII_table_bursty.dat"
+#define O2_POP2_FILENAME (const char *) "../External_tables/O2_PopII_table_bursty.dat"
+#define O3_POP2_FILENAME (const char *) "../External_tables/O3_PopII_table_bursty.dat"
+#define HeII_POP2_FILENAME (const char *) "../External_tables/HeII_PopII_table_bursty.dat"
 #define POP3_FILENAME (const char *) "../External_tables/pop3_luminosity.dat"
 
 //int init_pop2_tables(float Lya_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], float Halpha_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]);
@@ -33,7 +36,7 @@
 //float lookup_pop3(double table[POP3_ION_SAMPLES][POP3_COLUMNS], int ion_param, int col);
 //float get_luminosity(float table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS], float metallicity, int ion_param, double fPopIII, int col);
 
-int init_pop2_tables(float Lya_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], float Halpha_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]) {
+int init_pop2_tables(float Lya_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], float Halpha_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], float O2_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], float O3_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], float HeII_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]) {
   int i;
   FILE *F;
   //initialize Lya table
@@ -52,6 +55,34 @@ int init_pop2_tables(float Lya_table_2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARA
   }
   for (i = 0; i < POP2_METALLICITY_SAMPLES + 1; i++) {
     fscanf(F, "%e %e %e %e %e", &Halpha_table_2[i][0], &Halpha_table_2[i][1], &Halpha_table_2[i][2], &Halpha_table_2[i][3], &Halpha_table_2[i][4]);
+  }
+  fclose(F);
+    //initialize O2 table
+  if (!(F = fopen(O2_POP2_FILENAME, "r"))) {
+    fprintf(stderr, "Unable to open file: Halpha_table_pop2.dat for reading\nAborting\n");
+    return -1;
+  }
+  for (i = 0; i < POP2_METALLICITY_SAMPLES + 1; i++) {
+    fscanf(F, "%e %e %e %e %e", &O2_table_2[i][0], &O2_table_2[i][1], &O2_table_2[i][2], &O2_table_2[i][3], &O2_table_2[i][4]);
+  }
+  fclose(F);
+      //initialize O3 table
+  if (!(F = fopen(O3_POP2_FILENAME, "r"))) {
+    fprintf(stderr, "Unable to open file: Halpha_table_pop2.dat for reading\nAborting\n");
+    return -1;
+  }
+  for (i = 0; i < POP2_METALLICITY_SAMPLES + 1; i++) {
+    fscanf(F, "%e %e %e %e %e", &O3_table_2[i][0], &O3_table_2[i][1], &O3_table_2[i][2], &O3_table_2[i][3], &O3_table_2[i][4]);
+  }
+  fclose(F);
+
+      //initialize HeII table
+  if (!(F = fopen(HeII_POP2_FILENAME, "r"))) {
+    fprintf(stderr, "Unable to open file: Halpha_table_pop2.dat for reading\nAborting\n");
+    return -1;
+  }
+  for (i = 0; i < POP2_METALLICITY_SAMPLES + 1; i++) {
+    fscanf(F, "%e %e %e %e %e", &HeII_table_2[i][0], &HeII_table_2[i][1], &HeII_table_2[i][2], &HeII_table_2[i][3], &HeII_table_2[i][4]);
   }
   fclose(F);
 

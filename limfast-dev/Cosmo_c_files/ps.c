@@ -192,12 +192,12 @@ double dFdlnM_st_SFR (double lnM, void *params);
 double dFdlnM_st_fs (double lnM, void *params); // -MG
 double dFdlnM_st_MAR (double lnM, void *params); // -GS
 double dFdlnM_st_LineLum (double lnM, void *params); // -GS
-double dFdlnM_st_LineLumburst (double lnM, void *params); // -LMR
+double dFdlnM_st_BURST (double lnM, void *params); // -LMR
 double FgtrM_st_SFR (double z, double MassTurnover, double Alpha_star, double Alpha_esc, double Fstar10, double Fesc10, double Mlim_Fstar, double Mlim_Fesc);
 double FgtrM_st_fs(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar); // -MG
 double FgtrM_st_MAR(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar); // -GS
 double FgtrM_st_LineLum(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar); // -GS
-double FgtrM_st_LineLumburst(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar); // -LMR
+double FgtrM_st_BURST(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar); // -LMR
 /* New in v1.4 - part 3 of 4: end */
 
 double sigma_norm, R, theta_cmb, omhh, z_equality, y_d, sound_horizon, alpha_nu, f_nu, f_baryon, beta_c, d2fact, R_CUTOFF, DEL_CURR, SIG_CURR;
@@ -1551,7 +1551,7 @@ double FgtrM_st_LineLum(double z, double MassTurnover, double Alpha_star, double
 
 }
 
-double dFdlnM_st_LineLumburst(double lnM, void *params){ // - LMR 
+double dFdlnM_st_BURST(double lnM, void *params){ // - LMR 
     struct parameters_gsl_SFR_int_ vals = *(struct parameters_gsl_SFR_int_ *)params;
 
     double M = exp(lnM);
@@ -1562,7 +1562,7 @@ double dFdlnM_st_LineLumburst(double lnM, void *params){ // - LMR
     return dNdM_st(z, M) * M * src.linelumburst(z, M) * src.mar(z, M) * src.fstar(z, M);
 }
 
-double FgtrM_st_LineLumburst(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar){
+double FgtrM_st_BURST(double z, double MassTurnover, double Alpha_star, double Fstar10, double Mlim_Fstar){
   double M_Min = MassTurnover/50.;
   //double M_Min = 1e8;
     double result, error, lower_limit, upper_limit;
@@ -1586,7 +1586,7 @@ double FgtrM_st_LineLumburst(double z, double MassTurnover, double Alpha_star, d
       M_Min = s.minMass(z);
     }
 
-    F.function = &dFdlnM_st_LineLumburst;
+    F.function = &dFdlnM_st_BURST;
     F.params = &parameters_gsl_SFR;
     lower_limit = log(M_Min);
     upper_limit = log(FMAX(1e16, M_Min*100));
@@ -3206,7 +3206,7 @@ void initialiseFcollBURST_spline(float z, float Mmax, float MassTurnover, float 
         overdense_val = log10(1. + overdense_small_low) + (double)i/((double)NSFR_low-1.)*(log10(1.+overdense_small_high)-log10(1.+overdense_small_low));
 
         log10_overdense_spline_BURST[i] = overdense_val;
-        log10_Fcoll_spline_BURST[i] = log10(GaussLegendreQuad_FcollMAR(NGL_SFR,z,log(Mmax),Deltac,pow(10.,overdense_val)-1.,MassTurnover,Alpha_star,Fstar10,Mlim_Fstar));
+        log10_Fcoll_spline_BURST[i] = log10(GaussLegendreQuad_FcollBURST(NGL_SFR,z,log(Mmax),Deltac,pow(10.,overdense_val)-1.,MassTurnover,Alpha_star,Fstar10,Mlim_Fstar));
 
         if(log10_Fcoll_spline_BURST[i] < -40.){
             log10_Fcoll_spline_BURST[i] = -40.;

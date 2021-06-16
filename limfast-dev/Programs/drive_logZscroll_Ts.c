@@ -16,7 +16,7 @@
 
 #define ZLOW (float) (5.0)
 //#define ZHIGH  Z_HEAT_MAX
-#define ZHIGH (float) (20)
+#define ZHIGH (float) (21.8)
 
 int main(int argc, char ** argv){
   //float Z, M, M_MIN, nf;
@@ -60,13 +60,27 @@ int main(int argc, char ** argv){
   system("rm ../Boxes/SMD*");
   //system("rm ../Boxes/UVSR_*");
 
-  fprintf(stderr, "-GS: Calling init_ps...\n");
+  //fprintf(stderr, "-GS: Calling init_ps...\n");
   init_ps();
-  fprintf(stderr, "-GS: Calling init_mar_tbl...\n");
+  //fprintf(stderr, "-GS: Calling init_mar_tbl...\n");
   init_mar_tbl();
+  //fprintf(stderr, "At z = %f, custom_Nion = %e\n", 10.0, custom_Nion(10.0, defaultSources().minMass(10.0)));
 
-  fprintf(stderr, "At z = %f, custom_Nion = %e\n", 10.0, custom_Nion(10.0, defaultSources().minMass(10.0)));
-  fprintf(stderr, "At z = %f, histogram_Nion = %e\n", 10.0, histogram_Nion(10.0, defaultSources().minMass(10.0)));
+  init_f_tbl();
+  //float Lya_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], Halpha_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]; //-MG
+  //double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS];
+  //init_pop2_tables(Lya_table_pop2, Halpha_table_pop2); 
+  //init_pop3_table(table_pop3);
+
+  //fprintf(stderr, "At z = %f, histogram_Nion = %e\n", 10.0, histogram_Nion(10.0, defaultSources().minMass(10.0)));
+  //fprintf(stderr, "CHECK: %e\n", get_ftilde(10.0, 1.520e9));
+  //  double fstar_tilde = 0.0; 
+    //printf("CHECK: %e\n", get_ftilde(19, 1.5e10));
+  //  fstar_tilde = get_ftilde(19,1.5e10); // get the fstar_tilde per halo
+  //  double logmetal = 0.0;
+  //  logmetal = log10(fstar_tilde * Y_z  * OMm / OMb / Z_sun); // compute the metallicity per halo
+    //printf("logmetal: %e\n", logmetal);
+  //  printf("CHECK luminosity: %e\n", get_luminosity(Halpha_table_pop2, table_pop3, logmetal, 3, customPopIII(19), 3));
 
   // open log file
   system("rm ../Log_files/*");
@@ -115,9 +129,9 @@ int main(int argc, char ** argv){
       sources src;
       src = defaultSources();
       M_MIN = src.minMass(Z);
-      printf("At z = %f, M_MIN = %e MSUN\n", Z, M_MIN);
-      printf("At z = %f, FSTAR_CHECK = %e\n", Z, src.fstar(10.0, 1.520e9));
-      printf("At z = %f, MAR_CHECK = %e\n", Z, src.mar(10.0, 1.520e9));
+      //printf("At z = %f, M_MIN = %e MSUN\n", Z, M_MIN);
+      //printf("At z = %f, FSTAR_CHECK = %e\n", Z, src.fstar(10.0, 1.520e9));
+      //printf("At driver z = %f, lum_CHECK = %e\n", Z, src.linelumburst(Z, 1.520e9));
     }
 
     // if USE_HALO_FIELD is turned on in ANAL_PARAMS.H, run the halo finder

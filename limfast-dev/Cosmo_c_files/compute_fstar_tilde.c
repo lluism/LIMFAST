@@ -7,9 +7,9 @@
 #include <gsl/gsl_spline2d.h>
 
 #define FILE_TO_READf             "../External_tables/IntegratedSFE_ZSTART_30.0.hdf5"
-#define DATASET_REDSHIFTf         "tab_z" // shape: 1501
-#define DATASET_MASSf             "tab_M" // shape: 701
-#define DATASET_MARf              "tab_f" // shape: 1501 x 701
+#define DATASET_REDSHIFTf         "z" // shape: 1501
+#define DATASET_MASSf             "M" // shape: 701
+#define DATASET_MARf              "f" // shape: 1501 x 701
 #define DIM_REDSHIFTf             1501 // 
 #define DIM_MASSf                 701
 #define DIM_MARf                  1052201
@@ -146,8 +146,9 @@ float get_ftilde(float redshift, float halo_mass)
 //
 //int main(int argc, char const *argv[])
 //{
-//  init_mar_tbl();
-//  printf("CHECK: %e\n", get_mar_base(10.0, 1.520e9));
-//  printf("CHECK: %e\n", get_mar(10.0, 1.520e9));
-//  return 0;
+ // printf("KABOOM \n");
+  //init_f_tbl();
+  //printf("CHECK: %e\n", get_f_base(10.0, 1.520e9));
+  //printf("CHECK: %e\n", get_ftilde(10.0, 1.520e9));
+  //return 0;
 //}

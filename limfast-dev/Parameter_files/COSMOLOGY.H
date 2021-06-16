@@ -113,6 +113,7 @@
 #define H_alpha_HZ (double) (4.57e14) /* frequency of Ha 6565\AA line */
 #define OIII_5007_HZ (double) (5.99e14) /* frequency of OIII 5007\AA line */
 #define OII_3727_HZ (double) (8.04e14) /* frequency of OII 3727\AA line */
+#define HeII_1640_HZ (double) (1.83e15) /* frequency of HeII 1640\AA line */
 #define f_rec_lya (double) (0.66)
 #define H_abundance (double) (0.76)
 #define He_abundance (double) (0.24)

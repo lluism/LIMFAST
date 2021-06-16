@@ -58,6 +58,7 @@ float *H1_1216A_sf;
 float *H1_6563A_sf;
 float *O3_5007A_sf;
 float *O2_3727A_sf;
+float *HeII_sf;
 
 void init_21cmMC_arrays() { // defined in Cosmo_c_files/ps.c
 
@@ -230,8 +231,8 @@ int main(int argc, char ** argv){
   double mean_f_coll_st_halolumburst, ST_over_PS_halolumburst, f_coll_halolumburst; // -LMR
   double mean_f_coll_st_LineLum; // -GS
   float metal_val, Halpha_lum, Lya_lum, Lya_emissivity, n_Hii; //-MG
-  float H1_1216A_sf_lum, H1_6563A_sf_lum, O3_5007A_sf_lum, O2_3727A_sf_lum; // -GS
-  float Lya_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], Halpha_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]; //-MG
+  float H1_1216A_sf_lum, H1_6563A_sf_lum, O3_5007A_sf_lum, O2_3727A_sf_lum, HeII_sf_lum; // -GS
+  float Lya_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], Ha_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1] , O3_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], O2_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], HeII_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1]; //-MG
   double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS]; //-MG
 
   float Lya_pop2_full_table[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM], Ha_pop2_full_table[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
@@ -260,15 +261,17 @@ int main(int argc, char ** argv){
 
   // Initializtion of source structure - RM
   init_mar_tbl(); // -GS
-  //float Halpha_table_2[DIM_POP2_METALLICITY_SAMPLES][DIM_POP2_ION_PARAM_SAMPLES];
+  init_f_tbl();
   //init_pop2_tbl(Halpha_table_2); // -GS
   //printf("\n\n- CHECK: OMm * RHOcrit:%e\n\n", OMm * RHOcrit);
-  init_pop2_full_tables(Lya_pop2_full_table, Ha_pop2_full_table, O3_pop2_full_table, O2_pop2_full_table);
-  //init_pop2_tables(Lya_table_pop2, Halpha_table_pop2);
-  //init_pop3_table(table_pop3);
+  //init_pop2_full_tables(Lya_pop2_full_table, Ha_pop2_full_table, O3_pop2_full_table, O2_pop2_full_table);
+  init_pop2_tables(Lya_PopII_table_bursty, Ha_PopII_table_bursty ,O2_PopII_table_bursty,O3_PopII_table_bursty,HeII_PopII_table_bursty);
+  init_pop3_table(table_pop3);
   sources src;
   src = defaultSources();
-  //printf("\n\n- CHECK Ha (old): %e\n\n", get_luminosity(Halpha_table_pop2, table_pop3, -1., 3, src.fPopIII(REDSHIFT), 3));
+  //printf("\n\n- CHECK Ha (old): %e\n\n", get_luminosity(Halpha_table_pop2, table_pop3, -1., 3, src.fPopIII(10), 3));
+  //printf("%f \n", REDSHIFT );
+  //printf("At bubbles z = %f, lum_CHECK = %e\n", 9., src.linelumburst(9., 1.520e9));
   //printf("\n\n- CHECK Lya: %e\n\n", get_Lya_luminosity(Lya_pop2_full_table, -1., -2.));
   //printf("\n\n- CHECK Ha (new): %e\n\n", get_Ha_luminosity(Ha_pop2_full_table, -1., -2.));
   //printf("\n\n- mean_rho_comoving: %e, %e\n\n", mean_rho_comoving(6.), mean_rho_comoving(12.));
@@ -358,6 +361,7 @@ int main(int argc, char ** argv){
   H1_6563A_sf = (float *) malloc(sizeof(double)*HII_TOT_FFT_NUM_PIXELS); // -GS
   O3_5007A_sf = (float *) malloc(sizeof(double)*HII_TOT_FFT_NUM_PIXELS); // -GS
   O2_3727A_sf = (float *) malloc(sizeof(double)*HII_TOT_FFT_NUM_PIXELS); // -GS
+  HeII_sf = (float *) malloc(sizeof(double)*HII_TOT_FFT_NUM_PIXELS); // -GS
   if (INHOMO_RECO) {  init_MHR();}
   if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) {
   	init_21cmMC_arrays();
@@ -463,7 +467,7 @@ int main(int argc, char ** argv){
   mean_f_coll_st_fs = FgtrM_st_fs(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
   // custom accumulated mass accretion rate
   mean_f_coll_st_MAR = FgtrM_st_MAR(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
-  mean_f_coll_st_halolumburst = FgtrM_st_LineLumburst(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
+  // for halo casemean_f_coll_st_halolumburst = FgtrM_st_BURST(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
   // custom accumulated line luminosity
   //mean_f_coll_st_LineLum = FgtrM_st_LineLum(REDSHIFT, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
   //fprintf(stderr, "The value of mean_f_coll_st_uni at redshift %f is %e\n", REDSHIFT, mean_f_coll_st_uni);
@@ -517,6 +521,7 @@ int main(int argc, char ** argv){
       free(H1_6563A_sf);
       free(O3_5007A_sf);
       free(O2_3727A_sf);
+      free(HeII_sf);
 	  free_ps();  if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) {destroy_21cmMC_arrays();} return -1;
 	}
 	for (ct=0; ct<HII_TOT_NUM_PIXELS; ct++){
@@ -604,6 +609,7 @@ int main(int argc, char ** argv){
       free(H1_6563A_sf);
       free(O3_5007A_sf);
       free(O2_3727A_sf);
+      free(HeII_sf);
       if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) {destroy_21cmMC_arrays();} return (int) (global_xH * 100);
     }
 
@@ -839,6 +845,7 @@ int main(int argc, char ** argv){
       free(H1_6563A_sf);
       free(O3_5007A_sf);
       free(O2_3727A_sf);
+      free(HeII_sf);
       if (HALO_MASS_DEPENDENT_IONIZING_EFFICIENCY) {destroy_21cmMC_arrays();}
 
       return -1;
@@ -959,7 +966,7 @@ int main(int argc, char ** argv){
 	  initialiseFcollSFR_spline(REDSHIFT, massofscaleR,M_TURN,ALPHA_STAR,ALPHA_ESC,F_STAR10,F_ESC10,Mlim_Fstar,Mlim_Fesc);
     initialiseFcollSFR_spline_fs(REDSHIFT, massofscaleR, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
     initialiseFcollMAR_spline(REDSHIFT, massofscaleR, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);
-    initialiseFcollBURST_spline(REDSHIFT, massofscaleR, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);//-LMR
+    // for halo caseinitialiseFcollBURST_spline(REDSHIFT, massofscaleR, M_TURN, ALPHA_STAR, F_STAR10, Mlim_Fstar);//-LMR
     // - RM
     /*
     if(USE_GENERAL_SOURCES)
@@ -1003,7 +1010,7 @@ int main(int argc, char ** argv){
       			  FcollSpline_SFR(density_over_mean - 1,&(Splined_Fcoll));
               FcollSpline_SFR_fs(density_over_mean - 1,&(Splined_Fcoll_fs));
               FcollSpline_MAR(density_over_mean - 1,&(Splined_Fcoll_MAR));
-              FcollSpline_BURST(density_over_mean - 1,&(Splined_Fcoll_halolumburst));
+              // for halo caseFcollSpline_BURST(density_over_mean - 1,&(Splined_Fcoll_halolumburst));
             }
       		  else{ // we can assume the classic constant ionizing luminosity to halo mass ratio
       		    Splined_Fcoll = Splined_Fcoll_uni;
@@ -1025,13 +1032,13 @@ int main(int argc, char ** argv){
         Fcoll_fs[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_fs;
         overden_box[HII_R_FFT_INDEX(x,y,z)] = density_over_mean - 1;
         MAR[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_MAR * (OMm*RHOcrit) * F_b;
-        BURST[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_halolumburst * (OMm*RHOcrit) * F_b;
+        // for halo caseBURST[HII_R_FFT_INDEX(x,y,z)] = Splined_Fcoll_halolumburst * (OMm*RHOcrit) * F_b;
 	      f_coll += Splined_Fcoll;
         //add to separate f_coll_uni using 'else' case
         f_coll_uni += Splined_Fcoll_uni;
         f_coll_fs += Splined_Fcoll_fs;
         f_coll_MAR += Splined_Fcoll_MAR;
-        f_coll_halolumburst += Splined_Fcoll_halolumburst;
+        // for halo casef_coll_halolumburst += Splined_Fcoll_halolumburst;
 
         // - RM
         /*
@@ -1054,7 +1061,7 @@ int main(int argc, char ** argv){
   ST_over_PS_uni = mean_f_coll_st_uni / f_coll_uni; //same for uni one -MG
   ST_over_PS_fs = mean_f_coll_st_fs / f_coll_fs;
   ST_over_PS_MAR = mean_f_coll_st_MAR / f_coll_MAR;
-  ST_over_PS_halolumburst = mean_f_coll_st_halolumburst / f_coll_halolumburst;
+  // for halo caseST_over_PS_halolumburst = mean_f_coll_st_halolumburst / f_coll_halolumburst;
   //printf("Tell me ST_over_PS_uni/ST_over_PS_MAR: %e/%e\n", ST_over_PS_uni, ST_over_PS_MAR);
 	fprintf(LOG, "end f_coll normalization if, clock=%06.2f\n", (double)clock()/CLOCKS_PER_SEC);
 	fflush(LOG);
@@ -1179,7 +1186,7 @@ int main(int argc, char ** argv){
 
 
     int compute_seds = 1;
-    /*//read in last metallicity box to add to (if applicable) -MG
+    //read in last metallicity box to add to (if applicable) -MG
     sprintf(filename, "../Boxes/metallicity_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", PREV_REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
     F = fopen(filename, "rb");
     if (!(F = fopen(filename, "rb"))){
@@ -1204,9 +1211,9 @@ int main(int argc, char ** argv){
         }
       }
       fclose(F);
-		}*/
+		}
 
-    //read in last metallicity_cm box to add to (if applicable) -MG
+    /*//read in last metallicity_cm box to add to (if applicable) -MG
     sprintf(filename, "../Boxes/metallicitycm_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", PREV_REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
     F = fopen(filename, "rb");
     if (!(F = fopen(filename, "rb"))){
@@ -1243,7 +1250,7 @@ int main(int argc, char ** argv){
         smd_box[ct] = 0;
     }
     else {
-      fprintf(stderr, "Loading metallicity box with previous redshift values at %s\n", filename);
+      fprintf(stderr, "Loading smd box with previous redshift values at %s\n", filename);
       fprintf(LOG, "Loading metallicity box with previous redshift values at %s\n", filename);
       for (x=0; x<HII_DIM; x++) {
         for (y=0; y<HII_DIM; y++) {
@@ -1257,7 +1264,7 @@ int main(int argc, char ** argv){
         }
       }
       fclose(F);
-    }
+    }*/
 
     val = timesince(REDSHIFT, PREV_REDSHIFT) / (60*60*24*365.25); //in yrs, calculating here to hopefully speed things up -MG
     //output box now (for sure uses last fcoll calculation) -MG
@@ -1277,29 +1284,36 @@ int main(int argc, char ** argv){
           // calculate the metallicity box; mean_rho_comoving is BARYONIC not DM matter density -GS
           //metallicity_cm[ct] += Y_z * sfrd_box[ct] * val / mean_rho_comoving(REDSHIFT);
           metallicity[ct] += (Y_z * sfrd_box[ct] * val / mean_rho_comoving(REDSHIFT) / mean_f_coll_st_uni); // Divide just by mean Fcoll -GS
-          lineburstbox[ct] = (C * BURST[ct] * ST_over_PS_halolumburst * emis_time * Lsun  / CMperMPC) / (4 * PI * H_alpha_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 2));
-          //metallicity[ct] += Y_z * sfrd_box[ct] * val / (mean_rho_comoving(REDSHIFT) * Fcoll_uni[ct] * ST_over_PS_uni);
+          //lineburstbox[ct] = (C * BURST[ct] * ST_over_PS_halolumburst * emis_time * Lsun  / CMperMPC) / (4 * PI * H_alpha_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 2));
+          // for halo caselineburstbox[ct] = (C * BURST[ct] * ST_over_PS_halolumburst * emis_time * Lsun  / CMperMPC) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 2));
+          // for OII lineburstbox[ct] = (C * BURST[ct] * ST_over_PS_halolumburst * emis_time * Lsun  / CMperMPC) / (4 * PI * OII_3727_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 2));
+          // for OIII lineburstbox[ct] = (C * BURST[ct] * ST_over_PS_halolumburst * emis_time * Lsun  / CMperMPC) / (4 * PI * OIII_5007_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 2));
+          //lineburstbox[ct] = (C * BURST[ct] * ST_over_PS_halolumburst * emis_time * Lsun  / CMperMPC) / (4 * PI * HeII_1640_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 2));
           //n_Hii = (1 - xH[HII_R_INDEX(x,y,z)]) * N_b0 * density_over_mean; //equation 7 in overleaf
           //Lya_emissivity = f_rec_lya * (double) 4.2e-13 * pow(1+REDSHIFT, 3) * (1 + He_abundance / (2 * H_abundance)) * Ly_alpha_E * pow(n_Hii, 2);
           //Lya_igm[ct] = (C * Lya_emissivity) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT));
         }
       }
     }
-    double perhaloha = 0.0;
+    /*double perhaloha = 0.0;
+    //double percell =0.0;
     for (x=0; x<HII_DIM; x++) {
       for (y=0; y<HII_DIM; y++) {
         for (z=0; z<HII_DIM; z++) {
             ct = HII_R_FFT_INDEX(x,y,z);
+            //percell += metallicity[ct];
             perhaloha += lineburstbox[ct];
         }
       }
     }
     perhaloha /= (HII_DIM * HII_DIM * HII_DIM);
-    fprintf(stderr, "Redshift : %f, mean Ha per halo: %f\n", REDSHIFT, perhaloha);
+    //percell /= (HII_DIM * HII_DIM * HII_DIM);
+    //fprintf(stderr, "Redshift : %e, mean Ha per cell: %e\n", REDSHIFT, percell/Z_sun);
+    fprintf(stderr, "Redshift : %e, mean Lya per-halo: %e\n", REDSHIFT, perhaloha);*/
 
     //if custom SEDs are enabled, use metallicity and starmass boxes to calculate other emission line radiation
     if (USE_CUSTOM_SEDS && compute_seds) {
-      if (init_pop2_tables(Lya_table_pop2, Halpha_table_pop2) == 0 && init_pop3_table(table_pop3) == 0) {
+      if (init_pop2_tables(Lya_PopII_table_bursty, Ha_PopII_table_bursty,O2_PopII_table_bursty,O3_PopII_table_bursty,HeII_PopII_table_bursty) == 0 && init_pop3_table(table_pop3) == 0) {
         //fprintf(stderr, "Calculating line emissivities...\n");
         //fprintf(stderr, "Lya pop3 luminosity test: %f\n", table_pop3[1][5] * table_pop3[1][7] / table_pop3[1][2]);
         //float avg = 0;
@@ -1316,29 +1330,27 @@ int main(int argc, char ** argv){
               if (metal_val < -3.0) { //for now, limit to -3
                 metal_val = -3.0;
               }
-              //Halpha_lum = lookup(Halpha_table, metal_val, 3);
-              Halpha_lum = get_luminosity(Halpha_table_pop2, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 3);
+
+              Halpha_lum = get_luminosity(Ha_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 3);
+              Halpha_sf[ct] = (C * Halpha_lum * Lsun * (emis_time * sfrd_box[ct]) ) / (4 * PI * H_alpha_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
               // Note that we return Ha intensity box in cgs units [erg/s/cm^2/Hz/sr]!
-              //Halpha_sf[ct] = (C * Halpha_lum * Lsun * smd_box[ct] * pixel_volume / CMperMPC) / (4 * PI * H_alpha_HZ * hubble(REDSHIFT) * pixel_volume * pow(CMperMPC, 2));
-              Halpha_sf[ct] = (C * Halpha_lum * Lsun * (emis_time * sfrd_box[ct]) * pixel_volume / CMperMPC) / (4 * PI * H_alpha_HZ * hubble(REDSHIFT) * pixel_volume * pow(CMperMPC, 2));
 
-              //Lya_lum = lookup(Lya_table, metal_val, 3);
-              //Lya_lum = get_luminosity(Lya_table_pop2, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 5);
-              //Lya_sf[ct] = (C * Lya_lum * Lsun * smd_box[ct] * pixel_volume / CMperMPC) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT) * pixel_volume * pow(CMperMPC, 2));
+              //Lya_lum = get_luminosity(Lya_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 5);
+              //Lya_sf[ct] = (C * Lya_lum * Lsun * (emis_time * sfrd_box[ct]) * pixel_volume / CMperMPC) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT) * pixel_volume * pow(CMperMPC, 2));
+              
+              //O2_3727A_sf_lum = get_luminosity(O2_PopII_table_bursty, table_pop3, metal_val, 1, src.fPopIII(REDSHIFT), 5);
+              //O2_3727A_sf[ct] = (C * O2_3727A_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * OII_3727_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
 
-              //H1_1216A_sf_lum = get_Lya_luminosity(Lya_pop2_full_table, metal_val, -2.);
-              //H1_1216A_sf[ct] = (C * Lsun * H1_1216A_sf_lum * sfrd_box[ct]) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT) * pow(CMperMPC, 3));
-              //H1_6563A_sf_lum = get_Ha_luminosity(Ha_pop2_full_table, metal_val, -2.);
-              //H1_6563A_sf[ct] = (C * Lsun * H1_6563A_sf_lum * sfrd_box[ct]) / (4 * PI * H_alpha_HZ * hubble(REDSHIFT) * pow(CMperMPC, 3));
-              //O3_5007A_sf_lum = get_O3_luminosity(O3_pop2_full_table, metal_val, -2.);
-              //O3_5007A_sf[ct] = (C * Lsun * O3_5007A_sf_lum * sfrd_box[ct]) / (4 * PI * OIII_5007_HZ * hubble(REDSHIFT) * pow(CMperMPC, 3));
-              //O2_3727A_sf_lum = get_O2_luminosity(O2_pop2_full_table, metal_val, -2.);
-              //O2_3727A_sf[ct] = (C * Lsun * O2_3727A_sf_lum * sfrd_box[ct]) / (4 * PI * OII_3727_HZ * hubble(REDSHIFT) * pow(CMperMPC, 3));
+              //O3_5007A_sf_lum = get_luminosity(O3_PopII_table_bursty, table_pop3, metal_val, 4, src.fPopIII(REDSHIFT), 5);
+              //O3_5007A_sf[ct] = (C * O3_5007A_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * OIII_5007_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
+
+              HeII_sf_lum = get_luminosity(HeII_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 6);
+              HeII_sf[ct] = (C * HeII_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * HeII_1640_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
 
               //printf("\n- CHECK Ha (old): %e\n", Halpha_lum*5e6);
               //printf("\n- CHECK Ha (new): %e\n", H1_6563A_sf_lum);
 
-              if(Halpha_lum <= 0.0 || Lya_lum <= 0.0) {
+              if(Lya_lum <= 0.0 ) {  //if(Halpha_lum <= 0.0 || Lya_lum <= 0.0) {
                 fprintf(stderr, "Impossible luminosity at Metallicity = %f, Halpha Luminosity = %f, Lya Luminosity = %f\n", metal_val, Halpha_lum, Lya_lum);
                 fprintf(LOG, "Impossible luminosity at Metallicity = %f, Halpha Luminosity = %f, Lya Luminosity = %f\n", metal_val, Halpha_lum, Lya_lum);
               }
@@ -1348,17 +1360,20 @@ int main(int argc, char ** argv){
         //fprintf(stderr, "avg lya lum: %f, avg lyasf: %f\n", avg_lum/(HII_DIM*HII_DIM*HII_DIM), avg/(HII_DIM*HII_DIM*HII_DIM));
       }
     }
-    double meanHa = 0.0;
+    /*double meanHa = 0.0;
     for (x=0; x<HII_DIM; x++) {
       for (y=0; y<HII_DIM; y++) {
         for (z=0; z<HII_DIM; z++) {
             ct = HII_R_FFT_INDEX(x,y,z);
-            meanHa += Halpha_sf[ct];
+            meanHa += Lya_sf[ct];
+            //meanHa += Lya_sf[ct];
+            //meanHa += O2_3727A_sf[ct];
+            //meanHa += HeII_sf[ct];
         }
       }
     }
     meanHa /= (HII_DIM * HII_DIM * HII_DIM);
-    fprintf(stderr, "redshift: %f, Mean Ha: %f\n", REDSHIFT, meanHa);
+    fprintf(stderr, "redshift: %e, Mean Lya cell: %e\n", REDSHIFT, meanHa);*/
 
       // find the neutral fraction
     global_xH = 0;
@@ -1409,7 +1424,7 @@ int main(int argc, char ** argv){
 
 
     if (INHOMO_RECO){
-      /*// N_rec box
+      // N_rec box
       sprintf(filename, "../Boxes/Nrec_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT,HII_FILTER, MFP, HII_DIM, BOX_LEN);
       if (!(F = fopen(filename, "wb"))){
 	    sprintf(error_message, "find_HII_bubbles: ERROR: unable to open file for writting Nrec box!\n");
@@ -1430,7 +1445,7 @@ int main(int argc, char ** argv){
         F = NULL;
      }
 
-     // Fcoll_uni box -MG
+     /*// Fcoll_uni box -MG
      sprintf(filename, "../Boxes/Fcoll_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
      if (!(F = fopen(filename, "wb"))) {
        sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Fcoll box.\n");
@@ -1746,7 +1761,7 @@ int main(int argc, char ** argv){
          F = NULL;
        }
 
-       sprintf(filename, "../Boxes/Halphasf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       /*sprintf(filename, "../Boxes/Halphasf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Halpha_sf_perhalo box.\n");
          goto CLEANUP;
@@ -1764,7 +1779,171 @@ int main(int argc, char ** argv){
          }
          fclose(F);
          F = NULL;
+       }*/
+
+            // Lyalpha_sf box -MG
+       /*sprintf(filename, "../Boxes/Lyasf_U1_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
+         goto CLEANUP;
        }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(Lya_sf + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }
+
+       sprintf(filename, "../Boxes/Lyasf_perhalo_U1_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf_perhalo box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(lineburstbox + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf_perhalo box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }*/
+
+            // OII_sf box -MG
+       /*sprintf(filename, "../Boxes/OIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(O2_3727A_sf + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }
+
+       sprintf(filename, "../Boxes/OIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf_perhalo box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(lineburstbox + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf_perhalo box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }*/
+
+      // OIII_sf box -MG
+       /*sprintf(filename, "../Boxes/OIIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(O3_5007A_sf + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }
+
+       sprintf(filename, "../Boxes/OIIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf_perhalo box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(lineburstbox + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf_perhalo box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }*/
+
+      // HeII_sf box -MG
+       sprintf(filename, "../Boxes/HeIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(HeII_sf + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }
+
+       /*sprintf(filename, "../Boxes/HeIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       if (!(F = fopen(filename, "wb"))) {
+         sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf_perhalo box.\n");
+         goto CLEANUP;
+       }
+       else {
+         for (x = 0; x < HII_DIM; x++) {
+           for (y = 0; y < HII_DIM; y++) {
+             for (z = 0; z < HII_DIM; z++) {
+               if (fwrite(lineburstbox + HII_R_FFT_INDEX(x,y,z), sizeof(float), 1, F) != 1) {
+                  sprintf(error_message, "find_HII_bubbles.c: Write error occured while writing Lya_sf_perhalo box.\n");
+                  goto CLEANUP;
+               }
+             }
+           }
+         }
+         fclose(F);
+         F = NULL;
+       }*/
 
        /*// New Lya box - GS
        sprintf(filename, "../Boxes/LineLum_HI1216A_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);

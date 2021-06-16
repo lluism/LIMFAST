@@ -20,8 +20,9 @@
 
 #define Y_z (float) (0.01) // fraction of metal to stellar mass -LMR 
 
-float Halpha_table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1];
+float Lya_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1],Ha_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], O2_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], O3_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], HeII_PopII_table_bursty[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1];
 double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS];
+
 
 // more general, allows for halos with multiple populations
 typedef struct{
@@ -291,6 +292,11 @@ double fstarFidMom(double z, double M)
     return 0.005;
 }
 
+double PopIIIATC(double z)
+{
+    return 9;
+}
+
 double noPopIII(double z)
 {
     return 0;
@@ -318,11 +324,45 @@ double line_luminosity(double logZ, double logU) {
 }
 
 double lum_per_halo(double z, double M){ // - LMR
+    sources s;
+    init_pop2_tables(Lya_PopII_table_bursty, Ha_PopII_table_bursty,O2_PopII_table_bursty,O3_PopII_table_bursty, HeII_PopII_table_bursty); 
+    init_pop3_table(table_pop3);
     double fstar_tilde = 0.0; 
+    double three = 0.0;
+    //printf("redshift and mass : %e, %e\n", z, M);
+    //printf("CHECK: %e\n", get_ftilde(z, M));
+    if (M >= 1.0e14) { 
+    M= 0.98e14;
+    }
+    else if (M <= 1.0e7) { //for now, 
+    M = 1.02e7;
+    }
+    //printf("redshift and mass : %e, %e\n", z, M);
     fstar_tilde = get_ftilde(z,M); // get the fstar_tilde per halo
+    // check wheter is a Pop III only halo
+    if (s.fPopIII(z) == 9) {
+        if ( M < minMassATC(z)){
+            three = 1.0;
+        }
+    }
+    else {
+        three = s.fPopIII(z);
+    }
     double logmetal = 0.0;
     logmetal = log10(fstar_tilde * Y_z  * OMm / OMb / Z_sun); // compute the metallicity per halo
-    return get_luminosity(Halpha_table_pop2, table_pop3, -1., 3, 0.0, 3);
+    if (logmetal > 0.0) { //for now, limit to 0
+    logmetal = 0.0;
+    }
+    else if (logmetal < -3.0) { //for now, limit to -3
+    logmetal = -3.0;
+    }
+    //printf("CHECK: %e\n", logmetal);
+    //printf("CHECK luminosity: %e\n", get_luminosity(Lya_PopII_table_bursty, table_pop3, logmetal, 1, noPopIII(z), 5));
+    //return get_luminosity(Ha_PopII_table_bursty, table_pop3, logmetal, 3, noPopIII(z), 3);
+    return get_luminosity(Lya_PopII_table_bursty, table_pop3, logmetal, 1, three, 5);
+    //return get_luminosity(O2_PopII_table_bursty, table_pop3, logmetal, 1, noPopIII(z), 5);
+    //return get_luminosity(O3_PopII_table_bursty, table_pop3, logmetal, 4, noPopIII(z), 5);
+    //return get_luminosity(HeII_PopII_table_bursty, table_pop3, logmetal, 4, noPopIII(z), 5);
     // this is just for Ha for now !!!
 }
 
@@ -331,11 +371,21 @@ double lum_per_halo(double z, double M){ // - LMR
 
 double custom_Nion(double z, double M) {
     //double frac_pop3 = customPopIII(z);
-    double frac_pop3 = 0.0;
+    double three =0.0;
+    if (s.fPopIII(z) == 9) {
+        if ( M < minMassATC(z)){
+            three = 1.0;
+        }
+    }
+    else {
+        three = s.fPopIII(z);
+    }
+    double frac_pop3 = three;
     //z = ((1+z)*ZPRIME_STEP_FACTOR - 1);
     float ion_pop3, ion_pop2;
     float avg = 0.0;
     char filename[1000];
+    //sources s;
     FILE *F;
 
     //read ion_pop3 from pop3 SED
@@ -399,8 +449,18 @@ double custom_Nion(double z, double M) {
 double histogram_Nion(double z, double M) {
     FILE *F;
     char filename[1000];
-    double frac_pop3 = customPopIII(z);
+    double three =0.0;
+    if (s.fPopIII(z) == 9) {
+        if ( M < minMassATC(z)){
+            three = 1.0;
+        }
+    }
+    else {
+        three = s.fPopIII(z);
+    }
+    double frac_pop3 = three;
     double ion_pop3;
+    //sources s;
 
     //multiply z one redshift step up
     double newZ = ((1+z)*ZPRIME_STEP_FACTOR - 1);
@@ -586,10 +646,13 @@ double minmass_test(double z) {
     return 1e10;
 }
 
-sources test() {
+
+
+sources LIMFAST_user() {
     //return setSources(fesc_21cmfid, histogram_Nion, fstarFidMom_fig2, fxDef, minMassDefMom, noPopIII);
     //return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
-    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity, lum_per_halo);
+    // return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, PopIIIATC, mar_from_ham, line_luminosity, lum_per_halo);
+    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
 }
 
 // set the sources here
@@ -599,7 +662,7 @@ sources defaultSources()
     //change according to desired model
     //s = MomPopIII();
     //s = fid_21cmFAST();
-    s = test();
+    s = LIMFAST_user();
     return s;
 }
 
