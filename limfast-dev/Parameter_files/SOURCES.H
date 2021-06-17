@@ -371,6 +371,7 @@ double lum_per_halo(double z, double M){ // - LMR
 
 double custom_Nion(double z, double M) {
     //double frac_pop3 = customPopIII(z);
+    sources s;
     double three =0.0;
     if (s.fPopIII(z) == 9) {
         if ( M < minMassATC(z)){
@@ -447,6 +448,7 @@ double custom_Nion(double z, double M) {
 }
 
 double histogram_Nion(double z, double M) {
+    sources s;
     FILE *F;
     char filename[1000];
     double three =0.0;
