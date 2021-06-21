@@ -507,7 +507,7 @@ double custom_Nion(double z, double M) {
     }
     else {
         fscanf(F, "%e", &ion_pop2);
-        fprintf(stderr, "ion_pop2: %f\n", ion_pop2);
+        //fprintf(stderr, "ion_pop2: %f\n", ion_pop2);
         fclose(F);
     }
     return frac_pop3*(double)ion_pop3 + (1.0-frac_pop3)*(double)ion_pop2;
