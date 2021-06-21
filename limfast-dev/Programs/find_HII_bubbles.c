@@ -1350,11 +1350,11 @@ int main(int argc, char ** argv){
               //printf("\n- CHECK Ha (old): %e\n", Halpha_lum*5e6);
               //printf("\n- CHECK Ha (new): %e\n", H1_6563A_sf_lum);
 
-              /*if(Lya_lum < 0.0 ) {  //if(Halpha_lum <= 0.0 || Lya_lum <= 0.0) {
+              if(Lya_lum < 0.0 ) {  //if(Halpha_lum <= 0.0 || Lya_lum <= 0.0) {
                 fprintf(stderr, "Impossible luminosity at Metallicity = %f, Halpha Luminosity = %f, Lya Luminosity = %f\n", metal_val, Halpha_lum, Lya_lum);
                 fprintf(LOG, "Impossible luminosity at Metallicity = %f, Halpha Luminosity = %f, Lya Luminosity = %f\n", metal_val, Halpha_lum, Lya_lum);
               }
-            }*/
+            }
           }
         }
         //fprintf(stderr, "avg lya lum: %f, avg lyasf: %f\n", avg_lum/(HII_DIM*HII_DIM*HII_DIM), avg/(HII_DIM*HII_DIM*HII_DIM));
