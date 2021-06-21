@@ -369,7 +369,7 @@ double lum_per_halo(double z, double M){ // - LMR
 
 
 
-double custom_Nion(double z, double M) {
+/*double custom_Nion(double z, double M) {
     //double frac_pop3 = customPopIII(z);
     sources s;
     double three =0.0;
@@ -445,7 +445,74 @@ double custom_Nion(double z, double M) {
         fclose(F);
     }
     return frac_pop3*(double)ion_pop3 + (1.0-frac_pop3)*(double)ion_pop2;
+}*/
+
+double custom_Nion(double z, double M) {
+    double frac_pop3 = customPopIII(z);
+    z = ((1+z)*ZPRIME_STEP_FACTOR - 1);
+    float ion_pop3, ion_pop2;
+    float avg = 0.0;
+    char filename[1000];
+    FILE *F;
+
+    //read ion_pop3 from pop3 SED
+    if (!(F = fopen(POP3_SPECTRA_FILENAME, "r"))) {
+        fprintf(stderr, "custom_Nion: Unable to open file: pop3_spectra.dat for reading\n");
+        ion_pop3 = 0.0;
+    }
+    else {
+        fscanf(F, "%e", &ion_pop3);
+    }
+    fclose(F);
+
+    float vals[] = {1.0,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1,0.0,-0.1,-0.2,-0.3,-0.4,-0.5,-0.6,-0.7,-0.8,-0.9,-1.0,-1.1,
+                    -1.2,-1.3,-1.4,-1.5,-1.6,-1.7,-1.8,-1.9,-2.0,-2.1,-2.2,-2.3,-2.4,-2.5,-2.6,-2.7,-2.8,-2.9,-3.0};
+    float closest_val = -3.0;
+
+    //attempt to open metallicity box at current redshift, if does not exist then avg=0
+    sprintf(filename, "../Boxes/metallicity_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", z, HII_FILTER, R_BUBBLE_MAX, HII_DIM, BOX_LEN);
+    if (!(F = fopen(filename, "rb"))){
+        fprintf(stderr, "Error opening file %s for reading.\n", filename);
+    }
+    else { //otherwise take average of metallicity box
+        float *curr = malloc(sizeof(float));
+        for (long i = 0; i < HII_DIM * HII_DIM * HII_DIM; i++) {
+            if (fread(curr, sizeof(float), 1, F) != 1) {
+                fprintf(stderr, "Error reading file %s.\n", filename);
+                avg = 0.0;
+                break;
+            }
+            avg += *curr;
+        }
+        fclose(F);
+        avg /= (HII_DIM * HII_DIM * HII_DIM);
+        avg = (float) log10(avg / 0.014); //in units of log/msun
+        free(curr);
+
+        //use average to find pop2 SED with closest metallicity and read value from there
+        float smallest_diff = fabs(avg - vals[0]);
+        for (size_t i = 0; i < sizeof(vals) / sizeof(vals[0]); i++) {
+            if (fabs(avg - vals[i]) < smallest_diff) {
+                smallest_diff = fabs(avg - vals[i]);
+                closest_val = vals[i];
+            }
+        }
+    }
+
+    //read value from this file as ion_pop2
+    sprintf(filename, "../External_tables/pop2_SEDs/FSPS_SED_Salpeter_Age3Myr_logZ%.1f_per_Msun.dat", closest_val);
+    if (!(F = fopen(filename, "r"))) {
+        fprintf(stderr, "Error opening file %s for reading.\n", filename);
+        ion_pop2 = 0.0;
+    }
+    else {
+        fscanf(F, "%e", &ion_pop2);
+        fprintf(stderr, "ion_pop2: %f\n", ion_pop2);
+        fclose(F);
+    }
+    return frac_pop3*(double)ion_pop3 + (1.0-frac_pop3)*(double)ion_pop2;
 }
+
 
 double histogram_Nion(double z, double M) {
     sources s;
@@ -654,7 +721,7 @@ sources LIMFAST_user() {
     //return setSources(fesc_21cmfid, histogram_Nion, fstarFidMom_fig2, fxDef, minMassDefMom, noPopIII);
     //return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
     // return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, PopIIIATC, mar_from_ham, line_luminosity, lum_per_halo);
-    return setSources(fesc_limfastfid, custom_Nion, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
+    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
 }
 
 // set the sources here
