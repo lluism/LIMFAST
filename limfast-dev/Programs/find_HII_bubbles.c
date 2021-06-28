@@ -1338,11 +1338,11 @@ int main(int argc, char ** argv){
               //Lya_lum = get_luminosity(Lya_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 5);
               //Lya_sf[ct] = (C * Lya_lum * Lsun * (emis_time * sfrd_box[ct]) * pixel_volume / CMperMPC) / (4 * PI * Ly_alpha_HZ * hubble(REDSHIFT) * pixel_volume * pow(CMperMPC, 2));
               
-              //O2_3727A_sf_lum = get_luminosity(O2_PopII_table_bursty, table_pop3, metal_val, 1, src.fPopIII(REDSHIFT), 5);
-              //O2_3727A_sf[ct] = (C * O2_3727A_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * OII_3727_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
+              O2_3727A_sf_lum = get_luminosity(O2_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 5);
+              O2_3727A_sf[ct] = (C * O2_3727A_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * OII_3727_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
 
-              //O3_5007A_sf_lum = get_luminosity(O3_PopII_table_bursty, table_pop3, metal_val, 4, src.fPopIII(REDSHIFT), 5);
-              //O3_5007A_sf[ct] = (C * O3_5007A_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * OIII_5007_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
+              O3_5007A_sf_lum = get_luminosity(O3_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 5);
+              O3_5007A_sf[ct] = (C * O3_5007A_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * OIII_5007_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
 
               HeII_sf_lum = get_luminosity(HeII_PopII_table_bursty, table_pop3, metal_val, 3, src.fPopIII(REDSHIFT), 6);
               HeII_sf[ct] = (C * HeII_sf_lum * Lsun * (emis_time * sfrd_box[ct])) / (4 * PI * HeII_1640_HZ * hubble(REDSHIFT)  * pow(CMperMPC, 3));
@@ -1741,7 +1741,7 @@ int main(int argc, char ** argv){
        }*/
 
        // Halpha_sf box -MG
-       sprintf(filename, "../Boxes/Halphasf_onlypopIII_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       sprintf(filename, "../Boxes/Halphasf_onlypopII_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Halpha_sf box.\n");
          goto CLEANUP;
@@ -1823,7 +1823,7 @@ int main(int argc, char ** argv){
        }*/
 
             // OII_sf box -MG
-       /*sprintf(filename, "../Boxes/OIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       sprintf(filename, "../Boxes/OIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
          goto CLEANUP;
@@ -1843,7 +1843,7 @@ int main(int argc, char ** argv){
          F = NULL;
        }
 
-       sprintf(filename, "../Boxes/OIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       /*sprintf(filename, "../Boxes/OIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf_perhalo box.\n");
          goto CLEANUP;
@@ -1864,7 +1864,7 @@ int main(int argc, char ** argv){
        }*/
 
       // OIII_sf box -MG
-       /*sprintf(filename, "../Boxes/OIIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       sprintf(filename, "../Boxes/OIIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
          goto CLEANUP;
@@ -1884,7 +1884,7 @@ int main(int argc, char ** argv){
          F = NULL;
        }
 
-       sprintf(filename, "../Boxes/OIIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       /*sprintf(filename, "../Boxes/OIIIsf_perhalo_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf_perhalo box.\n");
          goto CLEANUP;
@@ -1905,7 +1905,7 @@ int main(int argc, char ** argv){
        }*/
 
       // HeII_sf box -MG
-       sprintf(filename, "../Boxes/HeIIsf_onlypopIII_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       sprintf(filename, "../Boxes/HeIIsf_onlypopII_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
          goto CLEANUP;

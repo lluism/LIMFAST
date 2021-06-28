@@ -236,7 +236,7 @@ float lookup_pop3(double table[POP3_ION_SAMPLES][POP3_COLUMNS], int ion_param, i
 }
 
 float get_luminosity(float table_pop2[POP2_METALLICITY_SAMPLES+1][POP2_ION_PARAM_SAMPLES+1], double table_pop3[POP3_ION_SAMPLES][POP3_COLUMNS], float metallicity, int ion_param, double fPopIII, int col) {
-  return lookup_pop3(table_pop3, -2, col) * (float) fPopIII; //+ lookup_pop2(table_pop2, metallicity, ion_param) * (float) (1.0 - fPopIII);
+  return  lookup_pop2(table_pop2, metallicity, ion_param) * (float) (1.0 - fPopIII);  /// lookup_pop3(table_pop3, -2, col) * (float) fPopIII; //+
 }
 
 /*void update_cell(float z, float z_prev, unsigned long long cell) {
