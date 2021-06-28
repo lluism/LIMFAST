@@ -1741,7 +1741,7 @@ int main(int argc, char ** argv){
        }*/
 
        // Halpha_sf box -MG
-       sprintf(filename, "../Boxes/Halphasf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       sprintf(filename, "../Boxes/Halphasf_onlypopIII_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Halpha_sf box.\n");
          goto CLEANUP;
@@ -1905,7 +1905,7 @@ int main(int argc, char ** argv){
        }*/
 
       // HeII_sf box -MG
-       sprintf(filename, "../Boxes/HeIIsf_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
+       sprintf(filename, "../Boxes/HeIIsf_onlypopIII_z%06.2f_HIIfilter%i_RHIImax%.0f_%i_%.0fMpc", REDSHIFT, HII_FILTER, MFP, HII_DIM, BOX_LEN);
        if (!(F = fopen(filename, "wb"))) {
          sprintf(error_message, "find_HII_bubbles.c: ERROR: unable to open file for writing Lya_sf box.\n");
          goto CLEANUP;
