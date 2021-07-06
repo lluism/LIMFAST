@@ -721,7 +721,7 @@ sources LIMFAST_user() {
     //return setSources(fesc_21cmfid, histogram_Nion, fstarFidMom_fig2, fxDef, minMassDefMom, noPopIII);
     //return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
     // return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, PopIIIATC, mar_from_ham, line_luminosity, lum_per_halo);
-    return setSources(fesc_limfastfid, custom_Nion, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
+    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
 }
 
 // set the sources here
