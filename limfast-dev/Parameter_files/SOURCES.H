@@ -447,7 +447,13 @@ double lum_per_halo(double z, double M){ // - LMR
     return frac_pop3*(double)ion_pop3 + (1.0-frac_pop3)*(double)ion_pop2;
 }*/
 
+float prevz =0.0;
+float prev = 0.0;
 double custom_Nion(double z, double M) {
+    if (z == prevz) {
+        return prev;
+    }
+    prevz = z;
     double frac_pop3 = customPopIII(z);
     z = ((1+z)*ZPRIME_STEP_FACTOR - 1);
     float ion_pop3, ion_pop2;
@@ -510,6 +516,7 @@ double custom_Nion(double z, double M) {
         //fprintf(stderr, "ion_pop2: %f\n", ion_pop2);
         fclose(F);
     }
+    prev = frac_pop3*(double)ion_pop3 + (1.0-frac_pop3)*(double)ion_pop2;
     return frac_pop3*(double)ion_pop3 + (1.0-frac_pop3)*(double)ion_pop2;
 }
 
@@ -721,7 +728,7 @@ sources LIMFAST_user() {
     //return setSources(fesc_21cmfid, histogram_Nion, fstarFidMom_fig2, fxDef, minMassDefMom, noPopIII);
     //return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, noPopIII, mar_from_ham, line_luminosity);
     // return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, PopIIIATC, mar_from_ham, line_luminosity, lum_per_halo);
-    return setSources(fesc_limfastfid, NionDef, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
+    return setSources(fesc_limfastfid, custom_Nion, fstarFidMom_fig2, fxDef, minMassDef, customPopIII, mar_from_ham, line_luminosity, lum_per_halo);
 }
 
 // set the sources here
@@ -736,3 +743,4 @@ sources defaultSources()
 }
 
 #endif
+
