@@ -1,0 +1,418 @@
+Reading in deltax box
+begin initial ffts, time=000.01 min
+end initial ffts, time=000.01 min
+Processing scale R= 000.62Mpc, time=000.01 min
+Processing scale R= 000.73Mpc, time=000.01 min
+Processing scale R= 000.87Mpc, time=000.04 min
+Processing scale R= 001.02Mpc, time=000.06 min
+Processing scale R= 001.21Mpc, time=000.09 min
+Processing scale R= 001.43Mpc, time=000.11 min
+Processing scale R= 001.69Mpc, time=000.14 min
+Processing scale R= 002.00Mpc, time=000.16 min
+Processing scale R= 002.37Mpc, time=000.18 min
+Processing scale R= 002.80Mpc, time=000.21 min
+Processing scale R= 003.31Mpc, time=000.23 min
+Processing scale R= 003.91Mpc, time=000.26 min
+Processing scale R= 004.62Mpc, time=000.28 min
+Processing scale R= 005.46Mpc, time=000.31 min
+Processing scale R= 006.45Mpc, time=000.33 min
+Processing scale R= 007.63Mpc, time=000.36 min
+Processing scale R= 009.02Mpc, time=000.38 min
+Processing scale R= 010.66Mpc, time=000.41 min
+Processing scale R= 012.60Mpc, time=000.43 min
+Processing scale R= 014.90Mpc, time=000.46 min
+Processing scale R= 017.61Mpc, time=000.48 min
+Processing scale R= 020.82Mpc, time=000.51 min
+Processing scale R= 024.61Mpc, time=000.53 min
+Processing scale R= 029.09Mpc, time=000.56 min
+Processing scale R= 034.39Mpc, time=000.58 min
+Processing scale R= 040.65Mpc, time=000.61 min
+Processing scale R= 048.06Mpc, time=000.63 min
+Processing scale R= 056.81Mpc, time=000.66 min
+Processing scale R= 067.15Mpc, time=000.68 min
+Processing scale R= 079.38Mpc, time=000.71 min
+Processing scale R= 093.84Mpc, time=000.74 min
+Processing scale R= 110.93Mpc, time=000.76 min
+Processing scale R= 131.13Mpc, time=000.79 min
+Processing scale R= 155.01Mpc, time=000.81 min
+Processing scale R= 183.24Mpc, time=000.84 min
+Processing scale R= 216.61Mpc, time=000.87 min
+Processing scale R= 256.06Mpc, time=000.89 min
+Processing scale R= 302.69Mpc, time=000.92 min
+Processing scale R= 357.81Mpc, time=000.94 min
+Processing scale R= 422.97Mpc, time=000.97 min
+Initializing look-up tables. Time=003.62 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=003.72
+Looping through box at z'=24.977640, time elapsed  (total for all threads)= 003.72 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 24.9776, <Tk>=13.675271, <x_e>=1.967567e-04
+Initializing look-up tables. Time=020.19 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=020.29
+Looping through box at z'=24.468275, time elapsed  (total for all threads)= 020.29 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 24.4683, <Tk>=13.153612, <x_e>=1.961619e-04
+Initializing look-up tables. Time=036.66 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=036.75
+Looping through box at z'=23.968897, time elapsed  (total for all threads)= 036.75 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 23.9689, <Tk>=12.725902, <x_e>=1.956369e-04
+Initializing look-up tables. Time=053.06 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=053.15
+Looping through box at z'=23.479311, time elapsed  (total for all threads)= 053.15 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 23.4793, <Tk>=12.253226, <x_e>=1.953489e-04
+Initializing look-up tables. Time=069.49 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=069.58
+Looping through box at z'=22.999325, time elapsed  (total for all threads)= 069.58 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 22.9993, <Tk>=11.870499, <x_e>=1.952711e-04
+Initializing look-up tables. Time=085.86 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=085.95
+Looping through box at z'=22.528749, time elapsed  (total for all threads)= 085.95 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 22.5287, <Tk>=11.506962, <x_e>=1.954175e-04
+Initializing look-up tables. Time=102.26 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=102.36
+Looping through box at z'=22.067402, time elapsed  (total for all threads)= 102.36 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 22.0674, <Tk>=11.149529, <x_e>=1.959139e-04
+Initializing look-up tables. Time=118.70 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=118.79
+Looping through box at z'=21.615101, time elapsed  (total for all threads)= 118.79 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 21.6151, <Tk>=10.815909, <x_e>=1.966978e-04
+Initializing look-up tables. Time=135.15 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=135.24
+Looping through box at z'=21.171667, time elapsed  (total for all threads)= 135.24 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 21.1717, <Tk>=10.538912, <x_e>=1.979046e-04
+Initializing look-up tables. Time=151.66 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=151.75
+Looping through box at z'=20.736929, time elapsed  (total for all threads)= 151.75 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 20.7369, <Tk>=10.234357, <x_e>=1.989381e-04
+Initializing look-up tables. Time=168.15 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=168.24
+Looping through box at z'=20.310715, time elapsed  (total for all threads)= 168.24 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 20.3107, <Tk>=9.970133, <x_e>=2.007124e-04
+Initializing look-up tables. Time=184.67 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=184.77
+Looping through box at z'=19.892859, time elapsed  (total for all threads)= 184.77 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 19.8929, <Tk>=9.751430, <x_e>=2.033148e-04
+Initializing look-up tables. Time=201.16 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=201.25
+Looping through box at z'=19.483194, time elapsed  (total for all threads)= 201.25 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 19.4832, <Tk>=9.584025, <x_e>=2.069021e-04
+Initializing look-up tables. Time=217.64 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=217.74
+Looping through box at z'=19.081564, time elapsed  (total for all threads)= 217.74 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 19.0816, <Tk>=9.492526, <x_e>=2.118298e-04
+Initializing look-up tables. Time=234.15 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=234.24
+Looping through box at z'=18.687809, time elapsed  (total for all threads)= 234.24 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 18.6878, <Tk>=9.451520, <x_e>=2.183444e-04
+Initializing look-up tables. Time=250.69 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=250.79
+Looping through box at z'=18.301773, time elapsed  (total for all threads)= 250.79 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 18.3018, <Tk>=9.520308, <x_e>=2.262920e-04
+Initializing look-up tables. Time=267.21 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=267.30
+Looping through box at z'=17.923307, time elapsed  (total for all threads)= 267.30 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 17.9233, <Tk>=9.682972, <x_e>=2.366835e-04
+Initializing look-up tables. Time=283.72 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=283.81
+Looping through box at z'=17.552263, time elapsed  (total for all threads)= 283.81 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 17.5523, <Tk>=9.993634, <x_e>=2.494499e-04
+Initializing look-up tables. Time=300.27 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=300.36
+Looping through box at z'=17.188494, time elapsed  (total for all threads)= 300.36 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 17.1885, <Tk>=10.323412, <x_e>=2.638192e-04
+Initializing look-up tables. Time=316.80 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=316.90
+Looping through box at z'=16.831858, time elapsed  (total for all threads)= 316.90 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 16.8319, <Tk>=10.789015, <x_e>=2.814748e-04
+Initializing look-up tables. Time=333.38 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=333.47
+Looping through box at z'=16.482214, time elapsed  (total for all threads)= 333.47 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 16.4822, <Tk>=11.413052, <x_e>=3.029905e-04
+Initializing look-up tables. Time=349.92 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=350.01
+Looping through box at z'=16.139425, time elapsed  (total for all threads)= 350.01 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 16.1394, <Tk>=12.215586, <x_e>=3.288181e-04
+Initializing look-up tables. Time=366.47 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=366.56
+Looping through box at z'=15.803358, time elapsed  (total for all threads)= 366.56 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 15.8034, <Tk>=13.223659, <x_e>=3.593697e-04
+Initializing look-up tables. Time=383.00 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=383.09
+Looping through box at z'=15.473881, time elapsed  (total for all threads)= 383.09 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 15.4739, <Tk>=14.469765, <x_e>=3.956464e-04
+Initializing look-up tables. Time=399.52 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=399.62
+Looping through box at z'=15.150864, time elapsed  (total for all threads)= 399.62 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 15.1509, <Tk>=15.938323, <x_e>=4.374633e-04
+Initializing look-up tables. Time=416.02 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=416.11
+Looping through box at z'=14.834180, time elapsed  (total for all threads)= 416.11 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.8342, <Tk>=17.713891, <x_e>=4.862741e-04
+Initializing look-up tables. Time=432.57 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=432.66
+Looping through box at z'=14.523706, time elapsed  (total for all threads)= 432.66 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.5237, <Tk>=19.841778, <x_e>=5.429124e-04
+Initializing look-up tables. Time=449.13 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=449.23
+Looping through box at z'=14.219320, time elapsed  (total for all threads)= 449.23 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.2193, <Tk>=22.371090, <x_e>=6.082970e-04
+Initializing look-up tables. Time=465.68 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=465.78
+Looping through box at z'=13.920902, time elapsed  (total for all threads)= 465.78 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 13.9209, <Tk>=25.354374, <x_e>=6.834127e-04
+Initializing look-up tables. Time=482.19 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=482.28
+Looping through box at z'=13.628336, time elapsed  (total for all threads)= 482.28 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 13.6283, <Tk>=28.856026, <x_e>=7.694502e-04
+Initializing look-up tables. Time=498.66 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=498.75
+Looping through box at z'=13.341506, time elapsed  (total for all threads)= 498.75 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 13.3415, <Tk>=32.947017, <x_e>=8.673081e-04
+Initializing look-up tables. Time=515.11 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=515.21
+Looping through box at z'=13.060300, time elapsed  (total for all threads)= 515.21 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 13.0603, <Tk>=37.575529, <x_e>=9.767890e-04
+Initializing look-up tables. Time=531.55 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=531.64
+Looping through box at z'=12.784608, time elapsed  (total for all threads)= 531.64 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 12.7846, <Tk>=42.950836, <x_e>=1.100461e-03
+Initializing look-up tables. Time=547.93 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=548.03
+Looping through box at z'=12.514321, time elapsed  (total for all threads)= 548.03 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 12.5143, <Tk>=49.157173, <x_e>=1.239493e-03
+Initializing look-up tables. Time=564.32 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=564.41
+Looping through box at z'=12.249335, time elapsed  (total for all threads)= 564.41 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 12.2493, <Tk>=56.286267, <x_e>=1.395229e-03
+Initializing look-up tables. Time=580.74 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=580.83
+Looping through box at z'=11.989545, time elapsed  (total for all threads)= 580.83 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 11.9895, <Tk>=64.443868, <x_e>=1.569138e-03
+Initializing look-up tables. Time=597.18 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=597.27
+Looping through box at z'=11.734848, time elapsed  (total for all threads)= 597.27 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 11.7348, <Tk>=73.750765, <x_e>=1.762624e-03
+Initializing look-up tables. Time=613.60 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=613.69
+Looping through box at z'=11.485146, time elapsed  (total for all threads)= 613.69 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 11.4851, <Tk>=84.184249, <x_e>=1.975629e-03
+Initializing look-up tables. Time=630.01 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=630.10
+Looping through box at z'=11.240339, time elapsed  (total for all threads)= 630.10 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 11.2403, <Tk>=96.069438, <x_e>=2.211259e-03
+Initializing look-up tables. Time=646.49 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=646.58
+Looping through box at z'=11.000333, time elapsed  (total for all threads)= 646.58 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 11.0003, <Tk>=109.617527, <x_e>=2.471482e-03
+Initializing look-up tables. Time=662.96 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=663.05
+Looping through box at z'=10.765033, time elapsed  (total for all threads)= 663.05 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 10.7650, <Tk>=124.997343, <x_e>=2.757483e-03
+Initializing look-up tables. Time=679.48 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=679.58
+Looping through box at z'=10.534346, time elapsed  (total for all threads)= 679.58 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 10.5343, <Tk>=142.446385, <x_e>=3.071334e-03
+Initializing look-up tables. Time=696.00 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=696.10
+Looping through box at z'=10.308182, time elapsed  (total for all threads)= 696.10 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 10.3082, <Tk>=162.226031, <x_e>=3.414975e-03
+Initializing look-up tables. Time=712.58 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=712.67
+Looping through box at z'=10.086452, time elapsed  (total for all threads)= 712.67 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 10.0865, <Tk>=184.603795, <x_e>=3.790082e-03
+Initializing look-up tables. Time=729.16 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=729.26
+Looping through box at z'=9.869071, time elapsed  (total for all threads)= 729.26 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 9.8691, <Tk>=209.952998, <x_e>=4.199129e-03
+Initializing look-up tables. Time=745.77 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=745.86
+Looping through box at z'=9.655952, time elapsed  (total for all threads)= 745.86 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 9.6560, <Tk>=238.305813, <x_e>=4.641198e-03
+Initializing look-up tables. Time=762.35 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=762.43
+Looping through box at z'=9.447012, time elapsed  (total for all threads)= 762.43 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 9.4470, <Tk>=270.358932, <x_e>=5.121928e-03
+Initializing look-up tables. Time=778.87 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=778.97
+Looping through box at z'=9.242168, time elapsed  (total for all threads)= 778.97 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 9.2422, <Tk>=306.426991, <x_e>=5.643734e-03
+Initializing look-up tables. Time=795.48 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=795.57
+Looping through box at z'=9.041342, time elapsed  (total for all threads)= 795.57 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 9.0413, <Tk>=346.932511, <x_e>=6.210273e-03
+Initializing look-up tables. Time=812.06 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=812.15
+Looping through box at z'=8.844453, time elapsed  (total for all threads)= 812.15 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 8.8445, <Tk>=392.290090, <x_e>=6.824670e-03
+Initializing look-up tables. Time=828.61 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=828.69
+Looping through box at z'=8.651424, time elapsed  (total for all threads)= 828.69 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 8.6514, <Tk>=443.224273, <x_e>=7.491194e-03
+Initializing look-up tables. Time=845.13 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=845.22
+Looping through box at z'=8.462181, time elapsed  (total for all threads)= 845.22 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 8.4622, <Tk>=500.354417, <x_e>=8.212112e-03
+Initializing look-up tables. Time=861.70 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=861.78
+Looping through box at z'=8.276649, time elapsed  (total for all threads)= 861.78 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 8.2766, <Tk>=564.715336, <x_e>=8.992716e-03
+Initializing look-up tables. Time=878.19 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=878.28
+Looping through box at z'=8.094753, time elapsed  (total for all threads)= 878.28 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 8.0948, <Tk>=636.768361, <x_e>=9.833377e-03
+Initializing look-up tables. Time=894.72 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=894.81
+Looping through box at z'=7.916425, time elapsed  (total for all threads)= 894.81 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 7.9164, <Tk>=718.066227, <x_e>=1.074385e-02
+Initializing look-up tables. Time=911.24 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=911.33
+Looping through box at z'=7.741593, time elapsed  (total for all threads)= 911.33 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 7.7416, <Tk>=808.760969, <x_e>=1.172476e-02
+Initializing look-up tables. Time=927.76 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=927.85
+Looping through box at z'=7.570189, time elapsed  (total for all threads)= 927.85 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 7.5702, <Tk>=909.967477, <x_e>=1.278657e-02
+Initializing look-up tables. Time=944.28 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=944.37
+Looping through box at z'=7.402146, time elapsed  (total for all threads)= 944.37 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 7.4021, <Tk>=1022.377723, <x_e>=1.393281e-02
+Initializing look-up tables. Time=960.81 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=960.90
+Looping through box at z'=7.237398, time elapsed  (total for all threads)= 960.90 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 7.2374, <Tk>=1146.756147, <x_e>=1.516373e-02
+Initializing look-up tables. Time=977.35 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=977.43
+Looping through box at z'=7.075881, time elapsed  (total for all threads)= 977.43 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 7.0759, <Tk>=1283.261476, <x_e>=1.647397e-02
+Initializing look-up tables. Time=993.91 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=994.00
+Looping through box at z'=6.917531, time elapsed  (total for all threads)= 994.00 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.9175, <Tk>=1430.286571, <x_e>=1.784552e-02
+Initializing look-up tables. Time=1010.43 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1010.52
+Looping through box at z'=6.762285, time elapsed  (total for all threads)= 1010.52 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.7623, <Tk>=1583.099093, <x_e>=1.924086e-02
+Initializing look-up tables. Time=1026.96 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1027.05
+Looping through box at z'=6.610083, time elapsed  (total for all threads)= 1027.05 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.6101, <Tk>=1738.089752, <x_e>=2.063428e-02
+Initializing look-up tables. Time=1043.50 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=1043.59
+Looping through box at z'=6.460866, time elapsed  (total for all threads)= 1043.59 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.4609, <Tk>=1894.156289, <x_e>=2.201884e-02
+Initializing look-up tables. Time=1060.05 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1060.14
+Looping through box at z'=6.314575, time elapsed  (total for all threads)= 1060.14 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.3146, <Tk>=2051.541387, <x_e>=2.339691e-02
+Initializing look-up tables. Time=1076.58 min
+Finishing initializing look-up tables.  It took 000.08 min on the main thread. Total time elapsed (total for all threads)=1076.67
+Looping through box at z'=6.171152, time elapsed  (total for all threads)= 1076.67 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.1712, <Tk>=2209.490099, <x_e>=2.476720e-02
+Initializing look-up tables. Time=1093.12 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=1093.20
+Looping through box at z'=6.030541, time elapsed  (total for all threads)= 1093.20 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 6.0305, <Tk>=2367.008811, <x_e>=2.612915e-02
+Initializing look-up tables. Time=1109.57 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1109.66
+Looping through box at z'=5.892687, time elapsed  (total for all threads)= 1109.66 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.8927, <Tk>=2523.180757, <x_e>=2.748175e-02
+Initializing look-up tables. Time=1126.05 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1126.14
+Looping through box at z'=5.757537, time elapsed  (total for all threads)= 1126.14 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.7575, <Tk>=2677.408379, <x_e>=2.882253e-02
+Initializing look-up tables. Time=1142.51 min
+Finishing initializing look-up tables.  It took 000.05 min on the main thread. Total time elapsed (total for all threads)=1142.60
+Looping through box at z'=5.625036, time elapsed  (total for all threads)= 1142.60 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.6250, <Tk>=2829.166063, <x_e>=3.014870e-02
+Initializing look-up tables. Time=1158.99 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1159.08
+Looping through box at z'=5.495134, time elapsed  (total for all threads)= 1159.08 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.4951, <Tk>=2977.922436, <x_e>=3.145763e-02
+Initializing look-up tables. Time=1175.46 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1175.56
+Looping through box at z'=5.367778, time elapsed  (total for all threads)= 1175.56 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.3678, <Tk>=3123.171936, <x_e>=3.274707e-02
+Initializing look-up tables. Time=1191.94 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1192.03
+Looping through box at z'=5.242920, time elapsed  (total for all threads)= 1192.03 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.2429, <Tk>=3264.464717, <x_e>=3.401517e-02
+Initializing look-up tables. Time=1208.48 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1208.57
+Looping through box at z'=5.120510, time elapsed  (total for all threads)= 1208.57 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.1205, <Tk>=3401.380939, <x_e>=3.526064e-02
+Initializing look-up tables. Time=1224.97 min
+Finishing initializing look-up tables.  It took 000.07 min on the main thread. Total time elapsed (total for all threads)=1225.06
+Looping through box at z'=5.000500, time elapsed  (total for all threads)= 1225.06 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 5.0005, <Tk>=3532.421083, <x_e>=3.647772e-02

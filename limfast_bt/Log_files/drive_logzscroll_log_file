@@ -1,0 +1,233 @@
+git commit =
+Calling init to set up the initial conditions
+Now calling: ./perturb_field 5.00, 9.08333 min have ellapsed
+Now calling: ./Ts 5.00, 10.05 min have ellapsed
+Now calling: ./perturb_field 24.98, 97.6667 min have ellapsed
+Now calling: ./find_HII_bubbles 24.977640 25.497192, 98.55 min have ellapsed
+Now calling: ./delta_T 024.98 ../Boxes/xH_nohalos_z024.98_nf*_200_200Mpc ../Boxes/Ts_z024.98_*_200Mpc, 98.95 min have ellapsed
+Now calling: ./perturb_field 24.47, 99 min have ellapsed
+Now calling: ./find_HII_bubbles 24.468275 24.977640, 100.033 min have ellapsed
+Now calling: ./delta_T 024.47 ../Boxes/xH_nohalos_z024.47_nf*_200_200Mpc ../Boxes/Ts_z024.47_*_200Mpc, 100.383 min have ellapsed
+Now calling: ./perturb_field 23.97, 100.417 min have ellapsed
+Now calling: ./find_HII_bubbles 23.968897 24.468275, 101.267 min have ellapsed
+Now calling: ./delta_T 023.97 ../Boxes/xH_nohalos_z023.97_nf*_200_200Mpc ../Boxes/Ts_z023.97_*_200Mpc, 101.55 min have ellapsed
+Now calling: ./perturb_field 23.48, 101.6 min have ellapsed
+Now calling: ./find_HII_bubbles 23.479311 23.968897, 102.433 min have ellapsed
+Now calling: ./delta_T 023.48 ../Boxes/xH_nohalos_z023.48_nf*_200_200Mpc ../Boxes/Ts_z023.48_*_200Mpc, 102.8 min have ellapsed
+Now calling: ./perturb_field 23.00, 102.833 min have ellapsed
+Now calling: ./find_HII_bubbles 22.999325 23.479311, 103.683 min have ellapsed
+Now calling: ./delta_T 023.00 ../Boxes/xH_nohalos_z023.00_nf*_200_200Mpc ../Boxes/Ts_z023.00_*_200Mpc, 104.083 min have ellapsed
+Now calling: ./perturb_field 22.53, 104.117 min have ellapsed
+Now calling: ./find_HII_bubbles 22.528749 22.999325, 104.967 min have ellapsed
+Now calling: ./delta_T 022.53 ../Boxes/xH_nohalos_z022.53_nf*_200_200Mpc ../Boxes/Ts_z022.53_*_200Mpc, 105.367 min have ellapsed
+Now calling: ./perturb_field 22.07, 105.4 min have ellapsed
+Now calling: ./find_HII_bubbles 22.067402 22.528749, 106.25 min have ellapsed
+Now calling: ./delta_T 022.07 ../Boxes/xH_nohalos_z022.07_nf*_200_200Mpc ../Boxes/Ts_z022.07_*_200Mpc, 106.6 min have ellapsed
+Now calling: ./perturb_field 21.62, 106.65 min have ellapsed
+Now calling: ./find_HII_bubbles 21.615101 22.067402, 107.483 min have ellapsed
+Now calling: ./delta_T 021.62 ../Boxes/xH_nohalos_z021.62_nf*_200_200Mpc ../Boxes/Ts_z021.62_*_200Mpc, 107.767 min have ellapsed
+Now calling: ./perturb_field 21.17, 107.8 min have ellapsed
+Now calling: ./find_HII_bubbles 21.171667 21.615101, 108.717 min have ellapsed
+Now calling: ./delta_T 021.17 ../Boxes/xH_nohalos_z021.17_nf*_200_200Mpc ../Boxes/Ts_z021.17_*_200Mpc, 108.967 min have ellapsed
+Now calling: ./perturb_field 20.74, 109 min have ellapsed
+Now calling: ./find_HII_bubbles 20.736929 21.171667, 109.883 min have ellapsed
+Now calling: ./delta_T 020.74 ../Boxes/xH_nohalos_z020.74_nf*_200_200Mpc ../Boxes/Ts_z020.74_*_200Mpc, 119 min have ellapsed
+Now calling: ./perturb_field 20.31, 119.033 min have ellapsed
+Now calling: ./find_HII_bubbles 20.310715 20.736929, 119.883 min have ellapsed
+Now calling: ./delta_T 020.31 ../Boxes/xH_nohalos_z020.31_nf*_200_200Mpc ../Boxes/Ts_z020.31_*_200Mpc, 128.917 min have ellapsed
+Now calling: ./perturb_field 19.89, 128.95 min have ellapsed
+Now calling: ./find_HII_bubbles 19.892859 20.310715, 129.8 min have ellapsed
+Now calling: ./delta_T 019.89 ../Boxes/xH_nohalos_z019.89_nf*_200_200Mpc ../Boxes/Ts_z019.89_*_200Mpc, 139.183 min have ellapsed
+Now calling: ./perturb_field 19.48, 139.217 min have ellapsed
+Now calling: ./find_HII_bubbles 19.483194 19.892859, 140.067 min have ellapsed
+Now calling: ./delta_T 019.48 ../Boxes/xH_nohalos_z019.48_nf*_200_200Mpc ../Boxes/Ts_z019.48_*_200Mpc, 149.033 min have ellapsed
+Now calling: ./perturb_field 19.08, 149.083 min have ellapsed
+Now calling: ./find_HII_bubbles 19.081564 19.483194, 149.967 min have ellapsed
+Now calling: ./delta_T 019.08 ../Boxes/xH_nohalos_z019.08_nf*_200_200Mpc ../Boxes/Ts_z019.08_*_200Mpc, 159.167 min have ellapsed
+Now calling: ./perturb_field 18.69, 159.2 min have ellapsed
+Now calling: ./find_HII_bubbles 18.687809 19.081564, 160.05 min have ellapsed
+Now calling: ./delta_T 018.69 ../Boxes/xH_nohalos_z018.69_nf*_200_200Mpc ../Boxes/Ts_z018.69_*_200Mpc, 169.2 min have ellapsed
+Now calling: ./perturb_field 18.30, 169.233 min have ellapsed
+Now calling: ./find_HII_bubbles 18.301773 18.687809, 170.083 min have ellapsed
+Now calling: ./delta_T 018.30 ../Boxes/xH_nohalos_z018.30_nf*_200_200Mpc ../Boxes/Ts_z018.30_*_200Mpc, 180.2 min have ellapsed
+Now calling: ./perturb_field 17.92, 180.25 min have ellapsed
+Now calling: ./find_HII_bubbles 17.923307 18.301773, 181.1 min have ellapsed
+Now calling: ./delta_T 017.92 ../Boxes/xH_nohalos_z017.92_nf*_200_200Mpc ../Boxes/Ts_z017.92_*_200Mpc, 190.1 min have ellapsed
+Now calling: ./perturb_field 17.55, 190.15 min have ellapsed
+Now calling: ./find_HII_bubbles 17.552263 17.923307, 191.033 min have ellapsed
+Now calling: ./delta_T 017.55 ../Boxes/xH_nohalos_z017.55_nf*_200_200Mpc ../Boxes/Ts_z017.55_*_200Mpc, 200.033 min have ellapsed
+Now calling: ./perturb_field 17.19, 200.067 min have ellapsed
+Now calling: ./find_HII_bubbles 17.188494 17.552263, 200.917 min have ellapsed
+Now calling: ./delta_T 017.19 ../Boxes/xH_nohalos_z017.19_nf*_200_200Mpc ../Boxes/Ts_z017.19_*_200Mpc, 209.967 min have ellapsed
+Now calling: ./perturb_field 16.83, 210 min have ellapsed
+Now calling: ./find_HII_bubbles 16.831858 17.188494, 210.85 min have ellapsed
+Now calling: ./delta_T 016.83 ../Boxes/xH_nohalos_z016.83_nf*_200_200Mpc ../Boxes/Ts_z016.83_*_200Mpc, 219.95 min have ellapsed
+Now calling: ./perturb_field 16.48, 219.983 min have ellapsed
+Now calling: ./find_HII_bubbles 16.482214 16.831858, 220.833 min have ellapsed
+Now calling: ./delta_T 016.48 ../Boxes/xH_nohalos_z016.48_nf*_200_200Mpc ../Boxes/Ts_z016.48_*_200Mpc, 229.883 min have ellapsed
+Now calling: ./perturb_field 16.14, 229.933 min have ellapsed
+Now calling: ./find_HII_bubbles 16.139425 16.482214, 230.783 min have ellapsed
+Now calling: ./delta_T 016.14 ../Boxes/xH_nohalos_z016.14_nf*_200_200Mpc ../Boxes/Ts_z016.14_*_200Mpc, 239.9 min have ellapsed
+Now calling: ./perturb_field 15.80, 239.95 min have ellapsed
+Now calling: ./find_HII_bubbles 15.803358 16.139425, 240.8 min have ellapsed
+Now calling: ./delta_T 015.80 ../Boxes/xH_nohalos_z015.80_nf*_200_200Mpc ../Boxes/Ts_z015.80_*_200Mpc, 249.9 min have ellapsed
+Now calling: ./perturb_field 15.47, 249.933 min have ellapsed
+Now calling: ./find_HII_bubbles 15.473881 15.803358, 250.8 min have ellapsed
+Now calling: ./delta_T 015.47 ../Boxes/xH_nohalos_z015.47_nf*_200_200Mpc ../Boxes/Ts_z015.47_*_200Mpc, 259.833 min have ellapsed
+Now calling: ./perturb_field 15.15, 259.867 min have ellapsed
+Now calling: ./find_HII_bubbles 15.150864 15.473881, 260.717 min have ellapsed
+Now calling: ./delta_T 015.15 ../Boxes/xH_nohalos_z015.15_nf*_200_200Mpc ../Boxes/Ts_z015.15_*_200Mpc, 269.7 min have ellapsed
+Now calling: ./perturb_field 14.83, 269.75 min have ellapsed
+Now calling: ./find_HII_bubbles 14.834180 15.150864, 270.6 min have ellapsed
+Now calling: ./delta_T 014.83 ../Boxes/xH_nohalos_z014.83_nf*_200_200Mpc ../Boxes/Ts_z014.83_*_200Mpc, 279.633 min have ellapsed
+Now calling: ./perturb_field 14.52, 279.667 min have ellapsed
+Now calling: ./find_HII_bubbles 14.523706 14.834180, 280.533 min have ellapsed
+Now calling: ./delta_T 014.52 ../Boxes/xH_nohalos_z014.52_nf*_200_200Mpc ../Boxes/Ts_z014.52_*_200Mpc, 289.633 min have ellapsed
+Now calling: ./perturb_field 14.22, 289.667 min have ellapsed
+Now calling: ./find_HII_bubbles 14.219320 14.523706, 290.517 min have ellapsed
+Now calling: ./delta_T 014.22 ../Boxes/xH_nohalos_z014.22_nf*_200_200Mpc ../Boxes/Ts_z014.22_*_200Mpc, 299.817 min have ellapsed
+Now calling: ./perturb_field 13.92, 299.867 min have ellapsed
+Now calling: ./find_HII_bubbles 13.920902 14.219320, 300.717 min have ellapsed
+Now calling: ./delta_T 013.92 ../Boxes/xH_nohalos_z013.92_nf*_200_200Mpc ../Boxes/Ts_z013.92_*_200Mpc, 309.783 min have ellapsed
+Now calling: ./perturb_field 13.63, 309.833 min have ellapsed
+Now calling: ./find_HII_bubbles 13.628336 13.920902, 310.667 min have ellapsed
+Now calling: ./delta_T 013.63 ../Boxes/xH_nohalos_z013.63_nf*_200_200Mpc ../Boxes/Ts_z013.63_*_200Mpc, 319.817 min have ellapsed
+Now calling: ./perturb_field 13.34, 319.867 min have ellapsed
+Now calling: ./find_HII_bubbles 13.341506 13.628336, 320.7 min have ellapsed
+Now calling: ./delta_T 013.34 ../Boxes/xH_nohalos_z013.34_nf*_200_200Mpc ../Boxes/Ts_z013.34_*_200Mpc, 329.917 min have ellapsed
+Now calling: ./perturb_field 13.06, 329.95 min have ellapsed
+Now calling: ./find_HII_bubbles 13.060300 13.341506, 330.8 min have ellapsed
+Now calling: ./delta_T 013.06 ../Boxes/xH_nohalos_z013.06_nf*_200_200Mpc ../Boxes/Ts_z013.06_*_200Mpc, 339.95 min have ellapsed
+Now calling: ./perturb_field 12.78, 339.983 min have ellapsed
+Now calling: ./find_HII_bubbles 12.784608 13.060300, 340.883 min have ellapsed
+Now calling: ./delta_T 012.78 ../Boxes/xH_nohalos_z012.78_nf*_200_200Mpc ../Boxes/Ts_z012.78_*_200Mpc, 349.967 min have ellapsed
+Now calling: ./perturb_field 12.51, 350.017 min have ellapsed
+Now calling: ./find_HII_bubbles 12.514321 12.784608, 350.867 min have ellapsed
+Now calling: ./delta_T 012.51 ../Boxes/xH_nohalos_z012.51_nf*_200_200Mpc ../Boxes/Ts_z012.51_*_200Mpc, 359.983 min have ellapsed
+Now calling: ./perturb_field 12.25, 360.017 min have ellapsed
+Now calling: ./find_HII_bubbles 12.249335 12.514321, 360.917 min have ellapsed
+Now calling: ./delta_T 012.25 ../Boxes/xH_nohalos_z012.25_nf*_200_200Mpc ../Boxes/Ts_z012.25_*_200Mpc, 370.233 min have ellapsed
+Now calling: ./perturb_field 11.99, 370.267 min have ellapsed
+Now calling: ./find_HII_bubbles 11.989545 12.249335, 371.117 min have ellapsed
+Now calling: ./delta_T 011.99 ../Boxes/xH_nohalos_z011.99_nf*_200_200Mpc ../Boxes/Ts_z011.99_*_200Mpc, 380.2 min have ellapsed
+Now calling: ./perturb_field 11.73, 380.233 min have ellapsed
+Now calling: ./find_HII_bubbles 11.734848 11.989545, 381.083 min have ellapsed
+Now calling: ./delta_T 011.73 ../Boxes/xH_nohalos_z011.73_nf*_200_200Mpc ../Boxes/Ts_z011.73_*_200Mpc, 390.183 min have ellapsed
+Now calling: ./perturb_field 11.49, 390.233 min have ellapsed
+Now calling: ./find_HII_bubbles 11.485146 11.734848, 391.083 min have ellapsed
+Now calling: ./delta_T 011.49 ../Boxes/xH_nohalos_z011.49_nf*_200_200Mpc ../Boxes/Ts_z011.49_*_200Mpc, 400.183 min have ellapsed
+Now calling: ./perturb_field 11.24, 400.233 min have ellapsed
+Now calling: ./find_HII_bubbles 11.240339 11.485146, 401.067 min have ellapsed
+Now calling: ./delta_T 011.24 ../Boxes/xH_nohalos_z011.24_nf*_200_200Mpc ../Boxes/Ts_z011.24_*_200Mpc, 410.283 min have ellapsed
+Now calling: ./perturb_field 11.00, 410.317 min have ellapsed
+Now calling: ./find_HII_bubbles 11.000333 11.240339, 411.167 min have ellapsed
+Now calling: ./delta_T 011.00 ../Boxes/xH_nohalos_z011.00_nf*_200_200Mpc ../Boxes/Ts_z011.00_*_200Mpc, 420.267 min have ellapsed
+Now calling: ./perturb_field 10.77, 420.317 min have ellapsed
+Now calling: ./find_HII_bubbles 10.765033 11.000333, 421.2 min have ellapsed
+Now calling: ./delta_T 010.77 ../Boxes/xH_nohalos_z010.77_nf*_200_200Mpc ../Boxes/Ts_z010.77_*_200Mpc, 430.3 min have ellapsed
+Now calling: ./perturb_field 10.53, 430.35 min have ellapsed
+Now calling: ./find_HII_bubbles 10.534346 10.765033, 431.2 min have ellapsed
+Now calling: ./delta_T 010.53 ../Boxes/xH_nohalos_z010.53_nf*_200_200Mpc ../Boxes/Ts_z010.53_*_200Mpc, 440.367 min have ellapsed
+Now calling: ./perturb_field 10.31, 440.417 min have ellapsed
+Now calling: ./find_HII_bubbles 10.308182 10.534346, 441.25 min have ellapsed
+Now calling: ./delta_T 010.31 ../Boxes/xH_nohalos_z010.31_nf*_200_200Mpc ../Boxes/Ts_z010.31_*_200Mpc, 450.417 min have ellapsed
+Now calling: ./perturb_field 10.09, 450.467 min have ellapsed
+Now calling: ./find_HII_bubbles 10.086452 10.308182, 451.3 min have ellapsed
+Now calling: ./delta_T 010.09 ../Boxes/xH_nohalos_z010.09_nf*_200_200Mpc ../Boxes/Ts_z010.09_*_200Mpc, 460.517 min have ellapsed
+Now calling: ./perturb_field 9.87, 460.567 min have ellapsed
+Now calling: ./find_HII_bubbles 9.869071 10.086452, 462.3 min have ellapsed
+Now calling: ./delta_T 009.87 ../Boxes/xH_nohalos_z009.87_nf*_200_200Mpc ../Boxes/Ts_z009.87_*_200Mpc, 471.483 min have ellapsed
+Now calling: ./perturb_field 9.66, 471.533 min have ellapsed
+Now calling: ./find_HII_bubbles 9.655952 9.869071, 472.367 min have ellapsed
+Now calling: ./delta_T 009.66 ../Boxes/xH_nohalos_z009.66_nf*_200_200Mpc ../Boxes/Ts_z009.66_*_200Mpc, 481.5 min have ellapsed
+Now calling: ./perturb_field 9.45, 481.55 min have ellapsed
+Now calling: ./find_HII_bubbles 9.447012 9.655952, 482.383 min have ellapsed
+Now calling: ./delta_T 009.45 ../Boxes/xH_nohalos_z009.45_nf*_200_200Mpc ../Boxes/Ts_z009.45_*_200Mpc, 491.617 min have ellapsed
+Now calling: ./perturb_field 9.24, 491.65 min have ellapsed
+Now calling: ./find_HII_bubbles 9.242168 9.447012, 492.867 min have ellapsed
+Now calling: ./delta_T 009.24 ../Boxes/xH_nohalos_z009.24_nf*_200_200Mpc ../Boxes/Ts_z009.24_*_200Mpc, 502.1 min have ellapsed
+Now calling: ./perturb_field 9.04, 502.15 min have ellapsed
+Now calling: ./find_HII_bubbles 9.041342 9.242168, 503 min have ellapsed
+Now calling: ./delta_T 009.04 ../Boxes/xH_nohalos_z009.04_nf*_200_200Mpc ../Boxes/Ts_z009.04_*_200Mpc, 513.167 min have ellapsed
+Now calling: ./perturb_field 8.84, 513.2 min have ellapsed
+Now calling: ./find_HII_bubbles 8.844453 9.041342, 514.05 min have ellapsed
+Now calling: ./delta_T 008.84 ../Boxes/xH_nohalos_z008.84_nf*_200_200Mpc ../Boxes/Ts_z008.84_*_200Mpc, 523.267 min have ellapsed
+Now calling: ./perturb_field 8.65, 523.317 min have ellapsed
+Now calling: ./find_HII_bubbles 8.651424 8.844453, 524.167 min have ellapsed
+Now calling: ./delta_T 008.65 ../Boxes/xH_nohalos_z008.65_nf*_200_200Mpc ../Boxes/Ts_z008.65_*_200Mpc, 533.35 min have ellapsed
+Now calling: ./perturb_field 8.46, 533.4 min have ellapsed
+Now calling: ./find_HII_bubbles 8.462181 8.651424, 534.25 min have ellapsed
+Now calling: ./delta_T 008.46 ../Boxes/xH_nohalos_z008.46_nf*_200_200Mpc ../Boxes/Ts_z008.46_*_200Mpc, 543.367 min have ellapsed
+Now calling: ./perturb_field 8.28, 543.4 min have ellapsed
+Now calling: ./find_HII_bubbles 8.276649 8.462181, 544.25 min have ellapsed
+Now calling: ./delta_T 008.28 ../Boxes/xH_nohalos_z008.28_nf*_200_200Mpc ../Boxes/Ts_z008.28_*_200Mpc, 553.633 min have ellapsed
+Now calling: ./perturb_field 8.09, 553.683 min have ellapsed
+Now calling: ./find_HII_bubbles 8.094753 8.276649, 554.517 min have ellapsed
+Now calling: ./delta_T 008.09 ../Boxes/xH_nohalos_z008.09_nf*_200_200Mpc ../Boxes/Ts_z008.09_*_200Mpc, 563.683 min have ellapsed
+Now calling: ./perturb_field 7.92, 563.717 min have ellapsed
+Now calling: ./find_HII_bubbles 7.916425 8.094753, 564.567 min have ellapsed
+Now calling: ./delta_T 007.92 ../Boxes/xH_nohalos_z007.92_nf*_200_200Mpc ../Boxes/Ts_z007.92_*_200Mpc, 573.783 min have ellapsed
+Now calling: ./perturb_field 7.74, 573.833 min have ellapsed
+Now calling: ./find_HII_bubbles 7.741593 7.916425, 574.7 min have ellapsed
+Now calling: ./delta_T 007.74 ../Boxes/xH_nohalos_z007.74_nf*_200_200Mpc ../Boxes/Ts_z007.74_*_200Mpc, 583.967 min have ellapsed
+Now calling: ./perturb_field 7.57, 584.017 min have ellapsed
+Now calling: ./find_HII_bubbles 7.570189 7.741593, 584.867 min have ellapsed
+Now calling: ./delta_T 007.57 ../Boxes/xH_nohalos_z007.57_nf*_200_200Mpc ../Boxes/Ts_z007.57_*_200Mpc, 594.083 min have ellapsed
+Now calling: ./perturb_field 7.40, 594.117 min have ellapsed
+Now calling: ./find_HII_bubbles 7.402146 7.570189, 594.967 min have ellapsed
+Now calling: ./delta_T 007.40 ../Boxes/xH_nohalos_z007.40_nf*_200_200Mpc ../Boxes/Ts_z007.40_*_200Mpc, 604.283 min have ellapsed
+Now calling: ./perturb_field 7.24, 604.333 min have ellapsed
+Now calling: ./find_HII_bubbles 7.237398 7.402146, 605.183 min have ellapsed
+Now calling: ./delta_T 007.24 ../Boxes/xH_nohalos_z007.24_nf*_200_200Mpc ../Boxes/Ts_z007.24_*_200Mpc, 614.667 min have ellapsed
+Now calling: ./perturb_field 7.08, 614.7 min have ellapsed
+Now calling: ./find_HII_bubbles 7.075881 7.237398, 615.583 min have ellapsed
+Now calling: ./delta_T 007.08 ../Boxes/xH_nohalos_z007.08_nf*_200_200Mpc ../Boxes/Ts_z007.08_*_200Mpc, 624.767 min have ellapsed
+Now calling: ./perturb_field 6.92, 624.8 min have ellapsed
+Now calling: ./find_HII_bubbles 6.917531 7.075881, 625.667 min have ellapsed
+Now calling: ./delta_T 006.92 ../Boxes/xH_nohalos_z006.92_nf*_200_200Mpc ../Boxes/Ts_z006.92_*_200Mpc, 634.95 min have ellapsed
+Now calling: ./perturb_field 6.76, 635 min have ellapsed
+Now calling: ./find_HII_bubbles 6.762285 6.917531, 635.833 min have ellapsed
+Now calling: ./delta_T 006.76 ../Boxes/xH_nohalos_z006.76_nf*_200_200Mpc ../Boxes/Ts_z006.76_*_200Mpc, 645.4 min have ellapsed
+Now calling: ./perturb_field 6.61, 645.433 min have ellapsed
+Now calling: ./find_HII_bubbles 6.610083 6.762285, 646.333 min have ellapsed
+Now calling: ./delta_T 006.61 ../Boxes/xH_nohalos_z006.61_nf*_200_200Mpc ../Boxes/Ts_z006.61_*_200Mpc, 655.533 min have ellapsed
+Now calling: ./perturb_field 6.46, 655.583 min have ellapsed
+Now calling: ./find_HII_bubbles 6.460866 6.610083, 656.45 min have ellapsed
+Now calling: ./delta_T 006.46 ../Boxes/xH_nohalos_z006.46_nf*_200_200Mpc ../Boxes/Ts_z006.46_*_200Mpc, 665.767 min have ellapsed
+Now calling: ./perturb_field 6.31, 665.8 min have ellapsed
+Now calling: ./find_HII_bubbles 6.314575 6.460866, 666.65 min have ellapsed
+Now calling: ./delta_T 006.31 ../Boxes/xH_nohalos_z006.31_nf*_200_200Mpc ../Boxes/Ts_z006.31_*_200Mpc, 675.983 min have ellapsed
+Now calling: ./perturb_field 6.17, 676.033 min have ellapsed
+Now calling: ./find_HII_bubbles 6.171152 6.314575, 676.867 min have ellapsed
+Now calling: ./delta_T 006.17 ../Boxes/xH_nohalos_z006.17_nf*_200_200Mpc ../Boxes/Ts_z006.17_*_200Mpc, 686 min have ellapsed
+Now calling: ./perturb_field 6.03, 686.05 min have ellapsed
+Now calling: ./find_HII_bubbles 6.030541 6.171152, 686.9 min have ellapsed
+Now calling: ./delta_T 006.03 ../Boxes/xH_nohalos_z006.03_nf*_200_200Mpc ../Boxes/Ts_z006.03_*_200Mpc, 696.267 min have ellapsed
+Now calling: ./perturb_field 5.89, 696.3 min have ellapsed
+Now calling: ./find_HII_bubbles 5.892687 6.030541, 697.15 min have ellapsed
+Now calling: ./delta_T 005.89 ../Boxes/xH_nohalos_z005.89_nf*_200_200Mpc ../Boxes/Ts_z005.89_*_200Mpc, 706.45 min have ellapsed
+Now calling: ./perturb_field 5.76, 706.483 min have ellapsed
+Now calling: ./find_HII_bubbles 5.757537 5.892687, 707.333 min have ellapsed
+Now calling: ./delta_T 005.76 ../Boxes/xH_nohalos_z005.76_nf*_200_200Mpc ../Boxes/Ts_z005.76_*_200Mpc, 716.567 min have ellapsed
+Now calling: ./perturb_field 5.63, 716.617 min have ellapsed
+Now calling: ./find_HII_bubbles 5.625036 5.757537, 717.467 min have ellapsed
+Now calling: ./delta_T 005.63 ../Boxes/xH_nohalos_z005.63_nf*_200_200Mpc ../Boxes/Ts_z005.63_*_200Mpc, 726.733 min have ellapsed
+Now calling: ./perturb_field 5.50, 726.767 min have ellapsed
+Now calling: ./find_HII_bubbles 5.495134 5.625036, 727.617 min have ellapsed
+Now calling: ./delta_T 005.50 ../Boxes/xH_nohalos_z005.50_nf*_200_200Mpc ../Boxes/Ts_z005.50_*_200Mpc, 736.917 min have ellapsed
+Now calling: ./perturb_field 5.37, 736.967 min have ellapsed
+Now calling: ./find_HII_bubbles 5.367778 5.495134, 737.8 min have ellapsed
+Now calling: ./delta_T 005.37 ../Boxes/xH_nohalos_z005.37_nf*_200_200Mpc ../Boxes/Ts_z005.37_*_200Mpc, 747.117 min have ellapsed
+Now calling: ./perturb_field 5.24, 747.167 min have ellapsed
+Now calling: ./find_HII_bubbles 5.242920 5.367778, 748 min have ellapsed
+Now calling: ./delta_T 005.24 ../Boxes/xH_nohalos_z005.24_nf*_200_200Mpc ../Boxes/Ts_z005.24_*_200Mpc, 757.433 min have ellapsed
+Now calling: ./perturb_field 5.12, 757.483 min have ellapsed
+Now calling: ./find_HII_bubbles 5.120510 5.242920, 758.483 min have ellapsed
+Now calling: ./delta_T 005.12 ../Boxes/xH_nohalos_z005.12_nf*_200_200Mpc ../Boxes/Ts_z005.12_*_200Mpc, 768.1 min have ellapsed
+Now calling: ./perturb_field 5.00, 768.133 min have ellapsed
+Now calling: ./find_HII_bubbles 5.000500 5.120510, 768.983 min have ellapsed
+Now calling: ./delta_T 005.00 ../Boxes/xH_nohalos_z005.00_nf*_200_200Mpc ../Boxes/Ts_z005.00_*_200Mpc, 778.367 min have ellapsed
+Now calling: redshift_interpolate_boxes 0 ../Redshift_interpolate_filelists/xH_200_200Mpc, 778.367 min have ellapsed
+Now calling: redshift_interpolate_boxes 0 ../Redshift_interpolate_filelists/delta_T_200_200Mpc, 778.367 min have ellapsed
+Now calling: redshift_interpolate_boxes 0 ../Redshift_interpolate_filelists/Nrec_200_200Mpc, 778.367 min have ellapsed
+Now calling: ./extract_delTps.pl 0.1 ../Output_files/Deldel_T_power_spec/ps_z0* > ../Output_files/Deldel_T_power_spec/Power_k0.1vsRedshift.txt, 778.367 min have ellapsed
