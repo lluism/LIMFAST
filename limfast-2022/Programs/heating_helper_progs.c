@@ -527,7 +527,7 @@ void evolveInt(float zp, float curr_delNL0[], double freq_int_heat[],
           splint(Overdense_high_table-1,FcollzLya_SFR_high_table[arr_num + zpp_ct]-1,second_derivs_FcollLya_zpp[zpp_ct]-1,NSFR_high,curr_delNL0[zpp_ct]*growth_zpp,&(fcollLya));
         }
         else {
-          fcoll = 1. * norm_xray;
+          fcoll = 1. * norm_xray;;
           fcollLya = 1. * norm_lya;
         }
       }

@@ -110,7 +110,7 @@ int main(int argc, char ** argv){
   fftwf_complex *box, *unfiltered_box;
   fftwf_plan plan;
   unsigned long long ct, sample_ct;
-  int R_ct,i,j,k, COMPUTE_Ts, x_e_ct;
+  int R_ct, i, ii, j, k, COMPUTE_Ts, x_e_ct;
   float REDSHIFT, growth_factor_z, R, R_factor, zp, mu_for_Ts, filling_factor_of_HI_zp;
   int ithread;
   float *Tk_box, *x_e_box, *Ts, J_star_Lya, dzp, prev_zp, zpp, prev_zpp, prev_R;
@@ -119,7 +119,7 @@ int main(int argc, char ** argv){
   float dz, zeta_ion_eff, Tk_BC, xe_BC, nu, zprev, zcurr, curr_delNL0[NUM_FILTER_STEPS_FOR_Ts];
   double *evolve_ans, ans[2], dansdz[5], Tk_ave, J_alpha_ave, xalpha_ave, J_alpha_tot, Xheat_ave,
     Xion_ave;
-double freq_int_heat_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts], freq_int_ion_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts], freq_int_lya_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts];
+	double freq_int_heat_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts], freq_int_ion_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts], freq_int_lya_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts];
   int goodSteps,badSteps;
   int m_xHII_low, m_xHII_high, n_ct, zp_ct;
 	double freq_int_heat[NUM_FILTER_STEPS_FOR_Ts], freq_int_ion[NUM_FILTER_STEPS_FOR_Ts], freq_int_lya[NUM_FILTER_STEPS_FOR_Ts];
@@ -132,28 +132,16 @@ double freq_int_heat_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts], freq_int_ion_tbl
 	float Splined_Fcollzp_mean, Splined_Fcollzpp_X_mean,ION_EFF_FACTOR,fcoll, fcollLya,Splined_Fcollzpp_Lya_mean; // New in v1.4
 	float zp_table; //New in v1.4
 	int counter,arr_num; // New in v1.4
+	int counter2; // For fixing kinky Lya background
 	double Luminosity_conversion_factor;
  	int RESTART = 0;
 	double Tback;
 
-	// Fixing wiggles
+	// Declaring new variables for the kinky fix -GS
 	int n_pts_radii;
 	double trial_zpp_min,trial_zpp_max,trial_zpp, weight;
 	bool first_radii, first_zero;
-	first_radii = true;
-	first_zero = true;
 	n_pts_radii = 1000;
-
-	// Declaring line luminosity tables -GS
-	//float lya_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			ha_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			hb_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			he2_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			o3_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			o2s_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			o2l_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			c2_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
-	//			co10_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM];
 
 
  /**********  BEGIN INITIALIZATION   **************************************/
@@ -707,16 +695,20 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
   counter = 0;
   while (zp > REDSHIFT){
       Tback = T_background(0, 0, zp);
+			//printf("\nCHECK REDSHIFT: %f > %f, first_radii: %d, first_zero: %d\n", zp, REDSHIFT, first_radii, first_zero);
 
-// - RM
- //if(USE_GENERAL_SOURCES) ION_EFF_FACTOR = ionEff(zp, src);
+			first_radii = true;
+			first_zero = true;
 
- //if(USE_GENERAL_SOURCES)
- //{
- //    if(src.minMassIII(zp) > src.minMass(zp)
- //        || src.minMassIII(zp) < 0) M_MIN = src.minMass(zp);
- //    else M_MIN = src.minMassIII(zp);
- //}
+			// - RM
+			//if(USE_GENERAL_SOURCES) ION_EFF_FACTOR = ionEff(zp, src);
+
+			//if(USE_GENERAL_SOURCES)
+			//{
+			//    if(src.minMassIII(zp) > src.minMass(zp)
+			//        || src.minMassIII(zp) < 0) M_MIN = src.minMass(zp);
+			//    else M_MIN = src.minMassIII(zp);
+			//}
 
 
 
@@ -888,24 +880,16 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
 
 	nuprime = nu_n(n_ct)*(1+zpp)/(1.0+zp);
 	mean_metallicity_collapsed = FgtrM_st_ZNUMEPOP2(zpp, M_TURN, ALPHA_STAR, F_STAR10)/FgtrM_st_ZDENOPOP2(zpp, M_TURN, ALPHA_STAR, F_STAR10);
-	printf("CHECK z=%.1f, mean_metallicity_collapsed=%.1e\n", zpp, mean_metallicity_collapsed);
+	//printf("CHECK z=%.1f, mean_metallicity_collapsed=%.1e\n", zpp, mean_metallicity_collapsed);
   // remove spectral_emissivity calculation, as it is added into one of the fcoll integrals if USE_GENERAL_SOURCES
   //if(USE_GENERAL_SOURCES) sum_lyn[R_ct] += frecycle(n_ct);
 	/*else*/ sum_lyn[R_ct] += frecycle(n_ct) * spectral_emissivity_alt(nuprime, 0, Pop, src.fPopIII(zpp), mean_metallicity_collapsed);
       }
 
-			// Find if we need to add a partial contribution to a radii to avoid kinks in the Lyman-alpha flux
-			// As we look at discrete radii (light-cone redshift, zpp) we can have two radii where one has a
-			// contribution and the next (larger) radii has no contribution. However, if the number of filtering
-			// steps were infinitely large, we would have contributions between these two discrete radii
-			// Thus, this aims to add a weighted contribution to the first radii where this occurs to smooth out
-			// kinks in the average Lyman-alpha flux.
-
-			// Note: We do not apply this correction to the LW background as it is unaffected by this. It is only
-			// the Lyn contribution that experiences the kink. Applying this correction to LW introduces kinks
-			// into the otherwise smooth quantity
+			//printf("We are at zp=%f and R_ct=%d\n", zp, R_ct);
+			//printf("Check sum_lyn[R_ct]: %.3e, sum_lyn[R_ct-1]: %.3e, first_radii: %d\n", sum_lyn[R_ct], sum_lyn[R_ct-1], first_radii);
+			// Here we adopt the fix of kinky Lya background described in the PR (https://github.com/21cmfast/21cmFAST/pull/230)
 			if(R_ct > 1 && sum_lyn[R_ct]==0.0 && sum_lyn[R_ct-1]>0. && first_radii) {
-
 					// The current zpp for which we are getting zero contribution
 					trial_zpp_max = (prev_zpp - (R_values[R_ct] - prev_R)*CMperMPC / drdz(prev_zpp)+prev_zpp)*0.5;
 					// The zpp for the previous radius for which we had a non-zero contribution
@@ -918,14 +902,14 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
 					for(ii=0;ii<n_pts_radii;ii++) {
 							trial_zpp = trial_zpp_min + (trial_zpp_max - trial_zpp_min)*(float)ii/((float)n_pts_radii-1.);
 
-							counter = 0;
+							counter2 = 0;
 							for (n_ct=NSPEC_MAX; n_ct>=2; n_ct--){
 									if (trial_zpp > zmax(zp, n_ct))
 											continue;
 
-									counter += 1;
+									counter2 += 1;
 							}
-							if(counter==0&&first_zero) {
+							if(counter2==0&&first_zero) {
 									first_zero = false;
 									weight = (float)ii/(float)n_pts_radii;
 							}
@@ -934,11 +918,9 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
 					// Now add a non-zero contribution to the previously zero contribution
 					// The amount is the weight, multplied by the contribution from the previous radii
 					sum_lyn[R_ct] = weight * sum_lyn[R_ct-1];
-					if (flag_options->USE_MINI_HALOS){
-							sum_lyn_MINI[R_ct] = weight * sum_lyn_MINI[R_ct-1];
-					}
 					first_radii = false;
 			}
+
 
     } // end loop over R_ct filter steps
     time(&curr_time);
@@ -976,8 +958,8 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
     }
 
 		/* DEFINE NORMALIZATION FACTORS */
-		double norm_lya_input = FgtrM_st_SFR_Lya_Norm(zp, M_TURN, ALPHA_STAR, ALPHA_ESC, F_STAR10, F_ESC10, Mlim_Fstar, Mlim_Fesc);
-		double norm_xray_input = FgtrM_st_SFR_Xray_Norm(zp, M_TURN, ALPHA_STAR, ALPHA_ESC, F_STAR10, F_ESC10, Mlim_Fstar, Mlim_Fesc);
+		double norm_lya_input = FgtrM_st_SFR_Lya(zp, M_TURN, ALPHA_STAR, ALPHA_ESC, F_STAR10, F_ESC10, Mlim_Fstar, Mlim_Fesc);
+		double norm_xray_input = FgtrM_st_SFR_Xray(zp, M_TURN, ALPHA_STAR, ALPHA_ESC, F_STAR10, F_ESC10, Mlim_Fstar, Mlim_Fesc);
 
     /********  LOOP THROUGH BOX *************/
     fprintf(stderr, "Looping through box at z'=%f, time elapsed  (total for all threads)= %06.2f min\n", zp, (double)clock()/CLOCKS_PER_SEC/60.0);
@@ -1048,7 +1030,7 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
 
       /********  finally compute the redshift derivatives *************/
       evolveInt(zp, curr_delNL0, freq_int_heat, freq_int_ion, freq_int_lya,
-	  	COMPUTE_Ts, ans, dansdz, arr_num, norm_lya_input, norm_xray_input);//, M_TURN,ALPHA_STAR,F_STAR10,T_AST);
+	  	COMPUTE_Ts, ans, dansdz, arr_num, norm_lya_input, norm_xray_input);
 
       //update quantities
       x_e_box[box_ct] += dansdz[0] * dzp; // remember dzp is negative

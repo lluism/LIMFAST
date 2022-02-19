@@ -2167,6 +2167,7 @@ double FgtrM_st_SFR_Xray(double z, double MassTurnover, double Alpha_star, doubl
 
 }
 
+/* Normalization factor for Xray */
 double FgtrM_st_SFR_Xray_Norm(double z, double MassTurnover, double Alpha_star, double Alpha_esc, double Fstar10, double Fesc10, double Mlim_Fstar, double Mlim_Fesc){
     double result, error, lower_limit, upper_limit;
     gsl_function F;
@@ -2289,6 +2290,7 @@ double FgtrM_st_SFR_Lya(double z, double MassTurnover, double Alpha_star, double
 
 }
 
+/* Normalization factor for Lya */
 double FgtrM_st_SFR_Lya_Norm(double z, double MassTurnover, double Alpha_star, double Alpha_esc, double Fstar10, double Fesc10, double Mlim_Fstar, double Mlim_Fesc){
     double result, error, lower_limit, upper_limit;
     gsl_function F;

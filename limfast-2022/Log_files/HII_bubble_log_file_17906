@@ -1,0 +1,372 @@
+Reading in deltax box
+begin initial ffts, clock=014.70
+end initial ffts, clock=026.32
+before memcpy, clock=026.32
+begin filter, clock=026.37
+end filter, clock=026.90
+begin fft with R=49.739460, clock=026.90
+end fft with R=49.739460, clock=027.35
+begin f_coll normalization, clock=027.62
+end f_coll normalization if, clock=038.76
+Start of the main loop through the box for this filter scale, clock=038.76
+before memcpy, clock=038.95
+begin filter, clock=038.97
+end filter, clock=039.45
+begin fft with R=45.217690, clock=039.45
+end fft with R=45.217690, clock=039.90
+begin f_coll normalization, clock=040.17
+end f_coll normalization if, clock=051.36
+Start of the main loop through the box for this filter scale, clock=051.36
+before memcpy, clock=051.56
+begin filter, clock=051.60
+end filter, clock=052.06
+begin fft with R=41.106991, clock=052.06
+end fft with R=41.106991, clock=052.54
+begin f_coll normalization, clock=052.82
+end f_coll normalization if, clock=064.17
+Start of the main loop through the box for this filter scale, clock=064.17
+before memcpy, clock=064.38
+begin filter, clock=064.42
+end filter, clock=064.88
+begin fft with R=37.369991, clock=064.88
+end fft with R=37.369991, clock=065.32
+begin f_coll normalization, clock=065.58
+end f_coll normalization if, clock=076.66
+Start of the main loop through the box for this filter scale, clock=076.66
+before memcpy, clock=076.84
+begin filter, clock=076.85
+end filter, clock=077.33
+begin fft with R=33.972717, clock=077.33
+end fft with R=33.972717, clock=077.73
+begin f_coll normalization, clock=078.00
+end f_coll normalization if, clock=089.04
+Start of the main loop through the box for this filter scale, clock=089.04
+before memcpy, clock=089.22
+begin filter, clock=089.24
+end filter, clock=089.71
+begin fft with R=30.884287, clock=089.71
+end fft with R=30.884287, clock=090.17
+begin f_coll normalization, clock=090.44
+end f_coll normalization if, clock=101.63
+Start of the main loop through the box for this filter scale, clock=101.63
+before memcpy, clock=101.84
+begin filter, clock=101.88
+end filter, clock=102.42
+begin fft with R=28.076624, clock=102.42
+end fft with R=28.076624, clock=102.90
+begin f_coll normalization, clock=103.16
+end f_coll normalization if, clock=114.23
+Start of the main loop through the box for this filter scale, clock=114.23
+before memcpy, clock=114.42
+begin filter, clock=114.44
+end filter, clock=114.96
+begin fft with R=25.524202, clock=114.96
+end fft with R=25.524202, clock=115.40
+begin f_coll normalization, clock=115.70
+end f_coll normalization if, clock=127.19
+Start of the main loop through the box for this filter scale, clock=127.19
+before memcpy, clock=127.37
+begin filter, clock=127.39
+end filter, clock=127.89
+begin fft with R=23.203819, clock=127.89
+end fft with R=23.203819, clock=128.36
+begin f_coll normalization, clock=128.62
+end f_coll normalization if, clock=139.87
+Start of the main loop through the box for this filter scale, clock=139.87
+before memcpy, clock=140.05
+begin filter, clock=140.08
+end filter, clock=140.61
+begin fft with R=21.094381, clock=140.61
+end fft with R=21.094381, clock=141.06
+begin f_coll normalization, clock=141.33
+end f_coll normalization if, clock=152.75
+Start of the main loop through the box for this filter scale, clock=152.75
+before memcpy, clock=152.94
+begin filter, clock=152.98
+end filter, clock=153.59
+begin fft with R=19.176710, clock=153.59
+end fft with R=19.176710, clock=154.07
+begin f_coll normalization, clock=154.33
+end f_coll normalization if, clock=165.58
+Start of the main loop through the box for this filter scale, clock=165.58
+before memcpy, clock=165.77
+begin filter, clock=165.79
+end filter, clock=166.31
+begin fft with R=17.433372, clock=166.31
+end fft with R=17.433372, clock=166.77
+begin f_coll normalization, clock=167.04
+end f_coll normalization if, clock=178.46
+Start of the main loop through the box for this filter scale, clock=178.46
+before memcpy, clock=178.64
+begin filter, clock=178.67
+end filter, clock=179.18
+begin fft with R=15.848520, clock=179.18
+end fft with R=15.848520, clock=179.63
+begin f_coll normalization, clock=179.90
+end f_coll normalization if, clock=191.51
+Start of the main loop through the box for this filter scale, clock=191.51
+before memcpy, clock=191.69
+begin filter, clock=191.71
+end filter, clock=192.32
+begin fft with R=14.407745, clock=192.32
+end fft with R=14.407745, clock=192.76
+begin f_coll normalization, clock=193.03
+end f_coll normalization if, clock=204.36
+Start of the main loop through the box for this filter scale, clock=204.36
+before memcpy, clock=204.54
+begin filter, clock=204.56
+end filter, clock=205.13
+begin fft with R=13.097950, clock=205.13
+end fft with R=13.097950, clock=205.58
+begin f_coll normalization, clock=205.85
+end f_coll normalization if, clock=217.35
+Start of the main loop through the box for this filter scale, clock=217.35
+before memcpy, clock=217.56
+begin filter, clock=217.59
+end filter, clock=218.16
+begin fft with R=11.907227, clock=218.16
+end fft with R=11.907227, clock=218.60
+begin f_coll normalization, clock=218.87
+end f_coll normalization if, clock=230.32
+Start of the main loop through the box for this filter scale, clock=230.32
+before memcpy, clock=230.50
+begin filter, clock=230.52
+end filter, clock=231.04
+begin fft with R=10.824751, clock=231.04
+end fft with R=10.824751, clock=231.48
+begin f_coll normalization, clock=231.74
+end f_coll normalization if, clock=243.11
+Start of the main loop through the box for this filter scale, clock=243.11
+before memcpy, clock=243.29
+begin filter, clock=243.30
+end filter, clock=243.82
+begin fft with R=9.840682, clock=243.82
+end fft with R=9.840682, clock=244.26
+begin f_coll normalization, clock=244.53
+end f_coll normalization if, clock=256.22
+Start of the main loop through the box for this filter scale, clock=256.22
+before memcpy, clock=256.41
+begin filter, clock=256.43
+end filter, clock=256.90
+begin fft with R=8.946074, clock=256.90
+end fft with R=8.946074, clock=257.35
+begin f_coll normalization, clock=257.61
+end f_coll normalization if, clock=268.99
+Start of the main loop through the box for this filter scale, clock=268.99
+before memcpy, clock=269.17
+begin filter, clock=269.19
+end filter, clock=269.71
+begin fft with R=8.132794, clock=269.71
+end fft with R=8.132794, clock=270.10
+begin f_coll normalization, clock=270.37
+end f_coll normalization if, clock=281.76
+Start of the main loop through the box for this filter scale, clock=281.76
+before memcpy, clock=281.94
+begin filter, clock=281.96
+end filter, clock=282.48
+begin fft with R=7.393449, clock=282.48
+end fft with R=7.393449, clock=282.91
+begin f_coll normalization, clock=283.17
+end f_coll normalization if, clock=294.59
+Start of the main loop through the box for this filter scale, clock=294.59
+before memcpy, clock=294.77
+begin filter, clock=294.79
+end filter, clock=295.25
+begin fft with R=6.721317, clock=295.25
+end fft with R=6.721317, clock=295.65
+begin f_coll normalization, clock=295.92
+end f_coll normalization if, clock=307.36
+Start of the main loop through the box for this filter scale, clock=307.36
+before memcpy, clock=307.54
+begin filter, clock=307.56
+end filter, clock=308.07
+begin fft with R=6.110288, clock=308.07
+end fft with R=6.110288, clock=308.52
+begin f_coll normalization, clock=308.81
+end f_coll normalization if, clock=320.25
+Start of the main loop through the box for this filter scale, clock=320.25
+before memcpy, clock=320.43
+begin filter, clock=320.48
+end filter, clock=320.94
+begin fft with R=5.554807, clock=320.94
+end fft with R=5.554807, clock=321.37
+begin f_coll normalization, clock=321.64
+end f_coll normalization if, clock=333.14
+Start of the main loop through the box for this filter scale, clock=333.14
+before memcpy, clock=333.32
+begin filter, clock=333.33
+end filter, clock=333.80
+begin fft with R=5.049825, clock=333.80
+end fft with R=5.049825, clock=334.23
+begin f_coll normalization, clock=334.50
+end f_coll normalization if, clock=346.24
+Start of the main loop through the box for this filter scale, clock=346.24
+before memcpy, clock=346.42
+begin filter, clock=346.44
+end filter, clock=346.93
+begin fft with R=4.590750, clock=346.93
+end fft with R=4.590750, clock=347.42
+begin f_coll normalization, clock=347.69
+end f_coll normalization if, clock=359.30
+Start of the main loop through the box for this filter scale, clock=359.30
+before memcpy, clock=359.48
+begin filter, clock=359.51
+end filter, clock=360.09
+begin fft with R=4.173409, clock=360.09
+end fft with R=4.173409, clock=360.52
+begin f_coll normalization, clock=360.79
+end f_coll normalization if, clock=372.36
+Start of the main loop through the box for this filter scale, clock=372.36
+before memcpy, clock=372.54
+begin filter, clock=372.56
+end filter, clock=373.11
+begin fft with R=3.794008, clock=373.11
+end fft with R=3.794008, clock=373.55
+begin f_coll normalization, clock=373.82
+end f_coll normalization if, clock=385.46
+Start of the main loop through the box for this filter scale, clock=385.46
+before memcpy, clock=385.64
+begin filter, clock=385.66
+end filter, clock=386.18
+begin fft with R=3.449098, clock=386.18
+end fft with R=3.449098, clock=386.61
+begin f_coll normalization, clock=386.88
+end f_coll normalization if, clock=398.39
+Start of the main loop through the box for this filter scale, clock=398.39
+before memcpy, clock=398.57
+begin filter, clock=398.59
+end filter, clock=399.10
+begin fft with R=3.135544, clock=399.10
+end fft with R=3.135544, clock=399.52
+begin f_coll normalization, clock=399.79
+end f_coll normalization if, clock=411.62
+Start of the main loop through the box for this filter scale, clock=411.62
+before memcpy, clock=411.82
+begin filter, clock=411.83
+end filter, clock=412.31
+begin fft with R=2.850494, clock=412.31
+end fft with R=2.850494, clock=412.74
+begin f_coll normalization, clock=413.02
+end f_coll normalization if, clock=424.71
+Start of the main loop through the box for this filter scale, clock=424.71
+before memcpy, clock=424.91
+begin filter, clock=424.95
+end filter, clock=425.42
+begin fft with R=2.591358, clock=425.42
+end fft with R=2.591358, clock=425.87
+begin f_coll normalization, clock=426.15
+end f_coll normalization if, clock=437.94
+Start of the main loop through the box for this filter scale, clock=437.94
+before memcpy, clock=438.12
+begin filter, clock=438.14
+end filter, clock=438.67
+begin fft with R=2.355780, clock=438.67
+end fft with R=2.355780, clock=439.12
+begin f_coll normalization, clock=439.40
+end f_coll normalization if, clock=451.10
+Start of the main loop through the box for this filter scale, clock=451.10
+before memcpy, clock=451.28
+begin filter, clock=451.29
+end filter, clock=451.81
+begin fft with R=2.141618, clock=451.81
+end fft with R=2.141618, clock=452.21
+begin f_coll normalization, clock=452.49
+end f_coll normalization if, clock=464.15
+Start of the main loop through the box for this filter scale, clock=464.15
+before memcpy, clock=464.33
+begin filter, clock=464.34
+end filter, clock=464.87
+begin fft with R=1.946926, clock=464.87
+end fft with R=1.946926, clock=465.29
+begin f_coll normalization, clock=465.58
+end f_coll normalization if, clock=477.30
+Start of the main loop through the box for this filter scale, clock=477.30
+before memcpy, clock=477.48
+begin filter, clock=477.50
+end filter, clock=478.00
+begin fft with R=1.769932, clock=478.00
+end fft with R=1.769932, clock=478.48
+begin f_coll normalization, clock=478.77
+end f_coll normalization if, clock=490.61
+Start of the main loop through the box for this filter scale, clock=490.61
+before memcpy, clock=490.81
+begin filter, clock=490.83
+end filter, clock=491.30
+begin fft with R=1.609029, clock=491.30
+end fft with R=1.609029, clock=491.75
+begin f_coll normalization, clock=492.03
+end f_coll normalization if, clock=503.77
+Start of the main loop through the box for this filter scale, clock=503.77
+before memcpy, clock=503.96
+begin filter, clock=503.98
+end filter, clock=504.50
+begin fft with R=1.462754, clock=504.50
+end fft with R=1.462754, clock=504.98
+begin f_coll normalization, clock=505.27
+end f_coll normalization if, clock=517.08
+Start of the main loop through the box for this filter scale, clock=517.08
+before memcpy, clock=517.27
+begin filter, clock=517.29
+end filter, clock=517.81
+begin fft with R=1.329776, clock=517.81
+end fft with R=1.329776, clock=518.29
+begin f_coll normalization, clock=518.58
+end f_coll normalization if, clock=530.42
+Start of the main loop through the box for this filter scale, clock=530.42
+before memcpy, clock=530.60
+begin filter, clock=530.63
+end filter, clock=531.22
+begin fft with R=1.208887, clock=531.22
+end fft with R=1.208887, clock=531.71
+begin f_coll normalization, clock=532.00
+end f_coll normalization if, clock=543.95
+Start of the main loop through the box for this filter scale, clock=543.95
+before memcpy, clock=544.13
+begin filter, clock=544.16
+end filter, clock=544.72
+begin fft with R=1.098989, clock=544.72
+end fft with R=1.098989, clock=545.20
+begin f_coll normalization, clock=545.50
+end f_coll normalization if, clock=557.42
+Start of the main loop through the box for this filter scale, clock=557.42
+before memcpy, clock=557.63
+begin filter, clock=557.67
+end filter, clock=558.23
+begin fft with R=0.999080, clock=558.23
+end fft with R=0.999080, clock=558.74
+begin f_coll normalization, clock=559.05
+end f_coll normalization if, clock=571.14
+Start of the main loop through the box for this filter scale, clock=571.14
+before memcpy, clock=571.33
+begin filter, clock=571.34
+end filter, clock=571.89
+begin fft with R=0.908255, clock=571.89
+end fft with R=0.908255, clock=572.30
+begin f_coll normalization, clock=572.61
+end f_coll normalization if, clock=584.70
+Start of the main loop through the box for this filter scale, clock=584.70
+before memcpy, clock=584.89
+begin filter, clock=584.90
+end filter, clock=585.47
+begin fft with R=0.825686, clock=585.47
+end fft with R=0.825686, clock=585.87
+begin f_coll normalization, clock=586.18
+end f_coll normalization if, clock=598.43
+Start of the main loop through the box for this filter scale, clock=598.43
+before memcpy, clock=598.63
+begin filter, clock=598.65
+end filter, clock=599.22
+begin fft with R=0.750624, clock=599.22
+end fft with R=0.750624, clock=599.67
+begin f_coll normalization, clock=599.97
+end f_coll normalization if, clock=611.99
+Start of the main loop through the box for this filter scale, clock=611.99
+before memcpy, clock=612.17
+begin fft with R=0.620350, clock=612.19
+end fft with R=0.620350, clock=612.59
+begin f_coll normalization, clock=612.89
+end f_coll normalization if, clock=624.91
+Start of the main loop through the box for this filter scale, clock=624.91
+ave R used to compute Gamma in ionized regions = 1.13887 Mpc
+Neutral fraction is 0.983405
+Now writting xH box at ../Boxes/xH_nohalos_z015.15_nf0.983405_Fstar0.0500_starPL0.5000_Fesc0.1000_escPL-0.5000_Mturn5.00e+08_HIIfilter1_RHIImax50_200_200Mpc

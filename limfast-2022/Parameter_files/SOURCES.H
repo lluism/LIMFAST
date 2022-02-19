@@ -250,7 +250,7 @@ double fstarTest(double z, double M)
 
 double fescDef(double z, double M)
 {
-    if(M > minMassATC(z)) return 0.08;
+    if(M > minMassATC(z)) return 0.10;
     return 1.0;
 }
 
