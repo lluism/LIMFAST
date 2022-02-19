@@ -136,6 +136,14 @@ double freq_int_heat_tbl[x_int_NXHII][NUM_FILTER_STEPS_FOR_Ts], freq_int_ion_tbl
  	int RESTART = 0;
 	double Tback;
 
+	// Fixing wiggles
+	int n_pts_radii;
+	double trial_zpp_min,trial_zpp_max,trial_zpp, weight;
+	bool first_radii, first_zero;
+	first_radii = true;
+	first_zero = true;
+	n_pts_radii = 1000;
+
 	// Declaring line luminosity tables -GS
 	//float lya_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
 	//			ha_table_pop2[DIM_POP2_METALLICITY][DIM_POP2_ION_PARAM],
@@ -885,6 +893,53 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
   //if(USE_GENERAL_SOURCES) sum_lyn[R_ct] += frecycle(n_ct);
 	/*else*/ sum_lyn[R_ct] += frecycle(n_ct) * spectral_emissivity_alt(nuprime, 0, Pop, src.fPopIII(zpp), mean_metallicity_collapsed);
       }
+
+			// Find if we need to add a partial contribution to a radii to avoid kinks in the Lyman-alpha flux
+			// As we look at discrete radii (light-cone redshift, zpp) we can have two radii where one has a
+			// contribution and the next (larger) radii has no contribution. However, if the number of filtering
+			// steps were infinitely large, we would have contributions between these two discrete radii
+			// Thus, this aims to add a weighted contribution to the first radii where this occurs to smooth out
+			// kinks in the average Lyman-alpha flux.
+
+			// Note: We do not apply this correction to the LW background as it is unaffected by this. It is only
+			// the Lyn contribution that experiences the kink. Applying this correction to LW introduces kinks
+			// into the otherwise smooth quantity
+			if(R_ct > 1 && sum_lyn[R_ct]==0.0 && sum_lyn[R_ct-1]>0. && first_radii) {
+
+					// The current zpp for which we are getting zero contribution
+					trial_zpp_max = (prev_zpp - (R_values[R_ct] - prev_R)*CMperMPC / drdz(prev_zpp)+prev_zpp)*0.5;
+					// The zpp for the previous radius for which we had a non-zero contribution
+					trial_zpp_min = (zpp_edge[R_ct-2] - (R_values[R_ct-1] - R_values[R_ct-2])*CMperMPC / drdz(zpp_edge[R_ct-2])+zpp_edge[R_ct-2])*0.5;
+
+					// Split the previous radii and current radii into n_pts_radii smaller radii (redshift) to have fine control of where
+					// it transitions from zero to non-zero
+					// This is a coarse approximation as it assumes that the linear sampling is a good representation of the different
+					// volumes of the shells (from different radii).
+					for(ii=0;ii<n_pts_radii;ii++) {
+							trial_zpp = trial_zpp_min + (trial_zpp_max - trial_zpp_min)*(float)ii/((float)n_pts_radii-1.);
+
+							counter = 0;
+							for (n_ct=NSPEC_MAX; n_ct>=2; n_ct--){
+									if (trial_zpp > zmax(zp, n_ct))
+											continue;
+
+									counter += 1;
+							}
+							if(counter==0&&first_zero) {
+									first_zero = false;
+									weight = (float)ii/(float)n_pts_radii;
+							}
+					}
+
+					// Now add a non-zero contribution to the previously zero contribution
+					// The amount is the weight, multplied by the contribution from the previous radii
+					sum_lyn[R_ct] = weight * sum_lyn[R_ct-1];
+					if (flag_options->USE_MINI_HALOS){
+							sum_lyn_MINI[R_ct] = weight * sum_lyn_MINI[R_ct-1];
+					}
+					first_radii = false;
+			}
+
     } // end loop over R_ct filter steps
     time(&curr_time);
     fprintf(stderr, "Finishing initializing look-up tables.  It took %06.2f min on the main thread. Time elapsed (total for all threads)=%06.2f\n", difftime(curr_time, start_time)/60.0, (double)clock()/CLOCKS_PER_SEC/60.0);
@@ -920,7 +975,9 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
 			 * F_STAR10 * OMb * RHOcrit * pow(CMperMPC, -3) * pow(1+zp, X_RAY_SPEC_INDEX+3);
     }
 
-
+		/* DEFINE NORMALIZATION FACTORS */
+		double norm_lya_input = FgtrM_st_SFR_Lya_Norm(zp, M_TURN, ALPHA_STAR, ALPHA_ESC, F_STAR10, F_ESC10, Mlim_Fstar, Mlim_Fesc);
+		double norm_xray_input = FgtrM_st_SFR_Xray_Norm(zp, M_TURN, ALPHA_STAR, ALPHA_ESC, F_STAR10, F_ESC10, Mlim_Fstar, Mlim_Fesc);
 
     /********  LOOP THROUGH BOX *************/
     fprintf(stderr, "Looping through box at z'=%f, time elapsed  (total for all threads)= %06.2f min\n", zp, (double)clock()/CLOCKS_PER_SEC/60.0);
@@ -991,7 +1048,7 @@ if(USE_GENERAL_SOURCES) M_MIN = src.minMass(REDSHIFT) * 50.0; //Multipied by 50 
 
       /********  finally compute the redshift derivatives *************/
       evolveInt(zp, curr_delNL0, freq_int_heat, freq_int_ion, freq_int_lya,
-	  	COMPUTE_Ts, ans, dansdz, arr_num);//, M_TURN,ALPHA_STAR,F_STAR10,T_AST);
+	  	COMPUTE_Ts, ans, dansdz, arr_num, norm_lya_input, norm_xray_input);//, M_TURN,ALPHA_STAR,F_STAR10,T_AST);
 
       //update quantities
       x_e_box[box_ct] += dansdz[0] * dzp; // remember dzp is negative

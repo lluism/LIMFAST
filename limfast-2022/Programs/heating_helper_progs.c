@@ -56,7 +56,7 @@ double T_RECFAST(float z, int flag);
 /* Main driver for evolution */
 void evolveInt(float zp, float curr_delNL0[], double freq_int_heat[],
 	       double freq_int_ion[], double freq_int_lya[],
-	       int COMPUTE_Ts, double y[], double deriv[], int arr_num);
+	       int COMPUTE_Ts, double y[], double deriv[], int arr_num, double norm_lya, double norm_xray);
 		   //float Mturn, float ALPHA_STAR, float F_STAR10, float T_AST);
 
 float dfcoll_dz(float z, float Tmin, float del_bias, float sig_bias);
@@ -470,7 +470,7 @@ double spec_emis_avg(double z, sources s, double nu_norm)
 *********************************************************************/
 void evolveInt(float zp, float curr_delNL0[], double freq_int_heat[],
 	       double freq_int_ion[], double freq_int_lya[],
-	       int COMPUTE_Ts, double y[], double deriv[], int arr_num){//, float M_TURN, float ALPHA_STAR, float F_STAR10, float T_AST){
+	       int COMPUTE_Ts, double y[], double deriv[], int arr_num, double norm_lya, double norm_xray){//, float M_TURN, float ALPHA_STAR, float F_STAR10, float T_AST){
   double  dfdzp, dadia_dzp, dcomp_dzp, dxheat_dt, ddz, dxion_source_dt, dxion_sink_dt;
   double zpp, dzpp, nu_temp;
   int zpp_ct,ithread;
@@ -527,15 +527,13 @@ void evolveInt(float zp, float curr_delNL0[], double freq_int_heat[],
           splint(Overdense_high_table-1,FcollzLya_SFR_high_table[arr_num + zpp_ct]-1,second_derivs_FcollLya_zpp[zpp_ct]-1,NSFR_high,curr_delNL0[zpp_ct]*growth_zpp,&(fcollLya));
         }
         else {
-          //fcoll = 1.;
-          //fcollLya = 1.;
-					splint(Overdense_high_table-1,FcollzXray_SFR_high_table[arr_num + zpp_ct]-1,second_derivs_FcollXray_zpp[zpp_ct]-1,NSFR_high,curr_delNL0[zpp_ct]*growth_zpp,&(fcoll));
-					splint(Overdense_high_table-1,FcollzLya_SFR_high_table[arr_num + zpp_ct]-1,second_derivs_FcollLya_zpp[zpp_ct]-1,NSFR_high,curr_delNL0[zpp_ct]*growth_zpp,&(fcollLya));
+          fcoll = 1. * norm_xray;
+          fcollLya = 1. * norm_lya;
         }
       }
       //printf("delta = %.4f, fcoll1 = %.4e, fcoll2 = %.4e\n",Overdensity,fcoll1,fcoll2);
-      //if (fcoll > 1.) fcoll = 1.;
-      //if (fcollLya > 1.) fcollLya = 1.;
+      if (fcoll > 1.) fcoll = 1. * norm_xray;
+      if (fcollLya > 1.) fcollLya = 1. * norm_lya;
 	  // Find Fcoll end ----------------------------------------------------------------------------------
 
 	  /* Instead of dfcoll/dz we compute fcoll/(T_AST*H(z)^-1)*(dt/dz),

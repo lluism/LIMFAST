@@ -2167,6 +2167,36 @@ double FgtrM_st_SFR_Xray(double z, double MassTurnover, double Alpha_star, doubl
 
 }
 
+double FgtrM_st_SFR_Xray_Norm(double z, double MassTurnover, double Alpha_star, double Alpha_esc, double Fstar10, double Fesc10, double Mlim_Fstar, double Mlim_Fesc){
+    double result, error, lower_limit, upper_limit;
+    gsl_function F;
+    double rel_tol = 0.001; //<- relative tolerance
+    gsl_integration_workspace * w
+    = gsl_integration_workspace_alloc (1000);
+
+    struct parameters_gsl_SFR_int_ parameters_gsl_SFR = {
+    .z_obs = z,
+    .Mdrop = MassTurnover,
+    .pl_star = Alpha_star,
+    .pl_esc = Alpha_esc,
+    .frac_star = Fstar10,
+    .frac_esc = Fesc10,
+    .LimitMass_Fstar = Mlim_Fstar,
+    .LimitMass_Fesc = Mlim_Fesc,
+    };
+
+    F.function = &dFdlnM_st_SFR_Xray;
+    F.params = &parameters_gsl_SFR;
+    //lower_limit = log(M_Min);
+    //upper_limit = log(FMAX(1e16, M_Min*100));
+
+    gsl_integration_qag (&F, log(1.0e1), log(1.0e16), 0, rel_tol, 1000, GSL_INTEG_GAUSS61, w, &result, &error);
+    gsl_integration_workspace_free (w);
+
+    return result / (OMm*RHOcrit);
+
+}
+
 // Same as above, but with fx and fesc = 1 and no Nion and no fx
 double dFdlnM_st_SFR_Lya(double lnM, void *params){
     struct parameters_gsl_SFR_int_ vals = *(struct parameters_gsl_SFR_int_ *)params;
@@ -2253,6 +2283,36 @@ double FgtrM_st_SFR_Lya(double z, double MassTurnover, double Alpha_star, double
 
     gsl_integration_qag (&F, lower_limit, upper_limit, 0, rel_tol,
                         1000, GSL_INTEG_GAUSS61, w, &result, &error);
+    gsl_integration_workspace_free (w);
+
+    return result / (OMm*RHOcrit);
+
+}
+
+double FgtrM_st_SFR_Lya_Norm(double z, double MassTurnover, double Alpha_star, double Alpha_esc, double Fstar10, double Fesc10, double Mlim_Fstar, double Mlim_Fesc){
+    double result, error, lower_limit, upper_limit;
+    gsl_function F;
+    double rel_tol = 0.001; //<- relative tolerance
+    gsl_integration_workspace * w
+    = gsl_integration_workspace_alloc (1000);
+
+    struct parameters_gsl_SFR_int_ parameters_gsl_SFR = {
+    .z_obs = z,
+    .Mdrop = MassTurnover,
+    .pl_star = Alpha_star,
+    .pl_esc = Alpha_esc,
+    .frac_star = Fstar10,
+    .frac_esc = Fesc10,
+    .LimitMass_Fstar = Mlim_Fstar,
+    .LimitMass_Fesc = Mlim_Fesc,
+    };
+
+    F.function = &dFdlnM_st_SFR_Lya;
+    F.params = &parameters_gsl_SFR;
+    //lower_limit = log(M_Min);
+    //upper_limit = log(FMAX(1e16, M_Min*100));
+
+    gsl_integration_qag (&F, log(1.0e1), log(1.0e16), 0, rel_tol, 1000, GSL_INTEG_GAUSS61, w, &result, &error);
     gsl_integration_workspace_free (w);
 
     return result / (OMm*RHOcrit);
