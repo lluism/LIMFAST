@@ -1,0 +1,63 @@
+Reading in deltax box
+begin initial ffts, time=000.00 min
+end initial ffts, time=000.00 min
+Processing scale R= 000.62Mpc, time=000.00 min
+Processing scale R= 000.73Mpc, time=000.00 min
+Processing scale R= 000.87Mpc, time=000.01 min
+Processing scale R= 001.02Mpc, time=000.02 min
+Processing scale R= 001.21Mpc, time=000.02 min
+Processing scale R= 001.43Mpc, time=000.03 min
+Processing scale R= 001.69Mpc, time=000.03 min
+Processing scale R= 002.00Mpc, time=000.04 min
+Processing scale R= 002.37Mpc, time=000.05 min
+Processing scale R= 002.80Mpc, time=000.05 min
+Processing scale R= 003.31Mpc, time=000.06 min
+Processing scale R= 003.91Mpc, time=000.06 min
+Processing scale R= 004.62Mpc, time=000.07 min
+Processing scale R= 005.46Mpc, time=000.08 min
+Processing scale R= 006.45Mpc, time=000.08 min
+Processing scale R= 007.63Mpc, time=000.09 min
+Processing scale R= 009.02Mpc, time=000.09 min
+Processing scale R= 010.66Mpc, time=000.10 min
+Processing scale R= 012.60Mpc, time=000.11 min
+Processing scale R= 014.90Mpc, time=000.11 min
+Processing scale R= 017.61Mpc, time=000.12 min
+Processing scale R= 020.82Mpc, time=000.13 min
+Processing scale R= 024.61Mpc, time=000.13 min
+Processing scale R= 029.09Mpc, time=000.14 min
+Processing scale R= 034.39Mpc, time=000.14 min
+Processing scale R= 040.65Mpc, time=000.15 min
+Processing scale R= 048.06Mpc, time=000.16 min
+Processing scale R= 056.81Mpc, time=000.16 min
+Processing scale R= 067.15Mpc, time=000.17 min
+Processing scale R= 079.38Mpc, time=000.18 min
+Processing scale R= 093.84Mpc, time=000.18 min
+Processing scale R= 110.93Mpc, time=000.19 min
+Processing scale R= 131.13Mpc, time=000.20 min
+Processing scale R= 155.01Mpc, time=000.20 min
+Processing scale R= 183.24Mpc, time=000.21 min
+Processing scale R= 216.61Mpc, time=000.21 min
+Processing scale R= 256.06Mpc, time=000.22 min
+Processing scale R= 302.69Mpc, time=000.23 min
+Processing scale R= 357.81Mpc, time=000.23 min
+Processing scale R= 422.97Mpc, time=000.24 min
+Initializing look-up tables. Time=001.29 min
+Finishing initializing look-up tables.  It took 002.38 min on the main thread. Total time elapsed (total for all threads)=003.69
+Looping through box at z'=14.919605, time elapsed  (total for all threads)= 003.74 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.9196, <Tk>=5.721692, <x_e>=1.992976e-04
+Initializing look-up tables. Time=008.04 min
+Finishing initializing look-up tables.  It took 001.87 min on the main thread. Total time elapsed (total for all threads)=009.93
+Looping through box at z'=14.607456, time elapsed  (total for all threads)= 009.94 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.6075, <Tk>=7.773139, <x_e>=2.583040e-04
+Initializing look-up tables. Time=014.24 min
+Finishing initializing look-up tables.  It took 001.72 min on the main thread. Total time elapsed (total for all threads)=015.98
+Looping through box at z'=14.301428, time elapsed  (total for all threads)= 016.03 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.3014, <Tk>=10.269762, <x_e>=3.257852e-04
+Initializing look-up tables. Time=020.31 min
+Finishing initializing look-up tables.  It took 004.70 min on the main thread. Total time elapsed (total for all threads)=025.04
+Looping through box at z'=14.001400, time elapsed  (total for all threads)= 025.06 min
+End scrolling through the box, which took %06.2 min
+Writting the intermediate output at zp = 14.0014, <Tk>=13.211407, <x_e>=4.028558e-04

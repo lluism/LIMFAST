@@ -1,0 +1,28 @@
+git commit =
+Calling init to set up the initial conditions
+Now calling: ./perturb_field 14.00, 1.81667 min have ellapsed
+Now calling: ./Ts 14.00, 1.98333 min have ellapsed
+Now calling: ./perturb_field 14.92, 15.05 min have ellapsed
+Now calling: ./find_HII_bubbles 14.919605 15.237997, 15.2167 min have ellapsed
+Now calling: ./delta_T 014.92 ../Boxes/xH_nohalos_z014.92_nf*_128_128Mpc ../Boxes/Ts_z014.92_*_128Mpc, 18.35 min have ellapsed
+Now calling: ./RSD 014.92 ../Boxes/I_CII158m_z014.92_*_128_128Mpc CII158m, 18.3833 min have ellapsed
+Now calling: ./RSD 014.92 ../Boxes/I_CO2600m_z014.92_*_128_128Mpc CO2600m, 18.4 min have ellapsed
+Now calling: ./perturb_field 14.61, 18.4167 min have ellapsed
+Now calling: ./find_HII_bubbles 14.607456 14.919605, 18.5833 min have ellapsed
+Now calling: ./delta_T 014.61 ../Boxes/xH_nohalos_z014.61_nf*_128_128Mpc ../Boxes/Ts_z014.61_*_128Mpc, 21.6667 min have ellapsed
+Now calling: ./RSD 014.61 ../Boxes/I_CII158m_z014.61_*_128_128Mpc CII158m, 21.7 min have ellapsed
+Now calling: ./RSD 014.61 ../Boxes/I_CO2600m_z014.61_*_128_128Mpc CO2600m, 21.7167 min have ellapsed
+Now calling: ./perturb_field 14.30, 21.7167 min have ellapsed
+Now calling: ./find_HII_bubbles 14.301428 14.607456, 21.8833 min have ellapsed
+Now calling: ./delta_T 014.30 ../Boxes/xH_nohalos_z014.30_nf*_128_128Mpc ../Boxes/Ts_z014.30_*_128Mpc, 25.0667 min have ellapsed
+Now calling: ./RSD 014.30 ../Boxes/I_CII158m_z014.30_*_128_128Mpc CII158m, 25.1 min have ellapsed
+Now calling: ./RSD 014.30 ../Boxes/I_CO2600m_z014.30_*_128_128Mpc CO2600m, 25.1167 min have ellapsed
+Now calling: ./perturb_field 14.00, 25.1167 min have ellapsed
+Now calling: ./find_HII_bubbles 14.001400 14.301428, 25.2833 min have ellapsed
+Now calling: ./delta_T 014.00 ../Boxes/xH_nohalos_z014.00_nf*_128_128Mpc ../Boxes/Ts_z014.00_*_128Mpc, 28.4333 min have ellapsed
+Now calling: ./RSD 014.00 ../Boxes/I_CII158m_z014.00_*_128_128Mpc CII158m, 28.4667 min have ellapsed
+Now calling: ./RSD 014.00 ../Boxes/I_CO2600m_z014.00_*_128_128Mpc CO2600m, 28.4667 min have ellapsed
+Now calling: redshift_interpolate_boxes 0 ../Redshift_interpolate_filelists/xH_128_128Mpc, 28.4667 min have ellapsed
+Now calling: redshift_interpolate_boxes 0 ../Redshift_interpolate_filelists/delta_T_128_128Mpc, 28.4667 min have ellapsed
+Now calling: redshift_interpolate_boxes 0 ../Redshift_interpolate_filelists/Nrec_128_128Mpc, 28.4667 min have ellapsed
+Now calling: ./extract_delTps.pl 0.1 ../Output_files/Deldel_T_power_spec/ps_z0* > ../Output_files/Deldel_T_power_spec/Power_k0.1vsRedshift.txt, 28.4667 min have ellapsed
