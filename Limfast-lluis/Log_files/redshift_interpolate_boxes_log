@@ -1,0 +1,254 @@
+Reading-in box: ../Boxes/SFRD_z005.00_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Output filename prefix is ../Boxes/SFRD_.
+Read-in box at redshift 5.000000
+Reading-in box: ../Boxes/SFRD_z005.12_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.120000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z005.24_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.240000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z005.37_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.370000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z005.50_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.500000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z005.63_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.630000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z005.76_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.760000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z005.89_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 5.890000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z006.03_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.030000
+Interpolating in the direction of 2
+Written light travel box at ../Boxes/SFRD__zstart005.00000_zend006.00685_FLIPBOXES1_200_500Mpc_lighttravel.
+
+Reading-in box: ../Boxes/SFRD_z006.17_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.170000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z006.31_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.310000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z006.46_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.460000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z006.61_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.610000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z006.76_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.760000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z006.92_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 6.920000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z007.08_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 7.080000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z007.24_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 7.240000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z007.40_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 7.400000
+Interpolating in the direction of 0
+Written light travel box at ../Boxes/SFRD__zstart006.00685_zend007.28732_FLIPBOXES1_200_500Mpc_lighttravel.
+
+Reading-in box: ../Boxes/SFRD_z007.57_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 7.570000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z007.74_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 7.740000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z007.92_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 7.920000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z008.09_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 8.090000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z008.28_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 8.280000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z008.46_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 8.460000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z008.65_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 8.650000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z008.84_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 8.840000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z009.04_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 9.040000
+Interpolating in the direction of 1
+Written light travel box at ../Boxes/SFRD__zstart007.28732_zend008.95125_FLIPBOXES1_200_500Mpc_lighttravel.
+
+Reading-in box: ../Boxes/SFRD_z009.24_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 9.240000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z009.45_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 9.450000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z009.66_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 9.660000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z009.87_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 9.870000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z010.09_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 10.090000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z010.31_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 10.310000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z010.53_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 10.530000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z010.77_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 10.770000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z011.00_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 11.000000
+Interpolating in the direction of 2
+
+Reading-in box: ../Boxes/SFRD_z011.24_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 11.240000
+Interpolating in the direction of 2
+Written light travel box at ../Boxes/SFRD__zstart008.95125_zend011.16942_FLIPBOXES1_200_500Mpc_lighttravel.
+
+Reading-in box: ../Boxes/SFRD_z011.49_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 11.490000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z011.73_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 11.730000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z011.99_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 11.990000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z012.25_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 12.250000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z012.51_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 12.510000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z012.78_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 12.780000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z013.06_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 13.060000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z013.34_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 13.340000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z013.63_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 13.630000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z013.92_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 13.920000
+Interpolating in the direction of 0
+
+Reading-in box: ../Boxes/SFRD_z014.22_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 14.220000
+Interpolating in the direction of 0
+Written light travel box at ../Boxes/SFRD__zstart011.16942_zend014.21916_FLIPBOXES1_200_500Mpc_lighttravel.
+
+Reading-in box: ../Boxes/SFRD_z014.52_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 14.520000
+Interpolating in the direction of 1
+
+Reading-in box: ../Boxes/SFRD_z014.83_HIIfilter1_RHIImax50_200_500Mpc
+Finished read
+Read-in box at redshift 14.830000
+Interpolating in the direction of 1
+
